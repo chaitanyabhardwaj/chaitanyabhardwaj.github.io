@@ -1,0 +1,521 @@
+
+<!--
+	TODO :
+	Circular Progress bar for cgpa
+	Vendor prefix CSS
+-->
+
+<!DOCTYPE html><html lang="en-US" dir="ltr"><head><meta charset="utf-8" /><title></title><meta name="description" content="" /><meta name="author" content="Chaitanya Bhardwaj" /><base href="/" target="_self" /><meta name="referrer" content="origin-when-cross-origin" />
+<!--<link rel="icon" type="image/x-icon" href="resources/favicon.png" />-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="./stylesheets/index.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="./scripts/section_manager.js"></script>
+<script>
+
+	$(document).ready(() => {
+		//setup sm
+		const sm = new SectionManager('.section');
+		sm.setNavbar('.navbar-container', '.nav-item');
+		//intial call when setup ready
+		sm.init();
+		this.viewWorkBtn = $('#view-work');
+		this.viewWorkBtn.click(() => {
+			sm.goToSection(1);
+		});
+	});
+
+</script>
+</head><body>
+	<div class="outer-wrapper"></div>
+	<div class="outer-container">
+		<!-- SECTION - 1 -->
+		<div class="section-container m-bg-primary-dark h-100">
+			<section id="section-1" class="text-white text-l section position-relative h-100">
+				<div class="position-absolute w-100 d-block text-center" style="top: 30%;">
+					<div>
+						Hello, I'm <span class="m-color-accent"><b>Chaitanya Bhardwaj.</b></span>
+					</div>
+					<div>
+						I'm a full stack developer.
+					</div>
+					<div class="m-3">
+						<button type="button" class="m-btn m-btn-white text-white text-m px-4 py-2" id="view-work">
+							View my work <i class="fa fa-long-arrow-right" id="rotating-arrow"></i>
+						</button>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- SECTION - 2 -->
+		<div class="section-container">
+			<section id="section-2" class="text-l section" style="min-height: 100%;">
+				<div id="section-2-content" class="w-100 d-block position-relative">
+					<div class="navbar-placeholder"></div>
+					<div class="navbar-container w-100" style="top: -5px; left: 0px;">
+						<div class="navbar navbar-expand-sm w-100 d-block text-s text-muted m-bg-primary-dark">
+							<button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbar1">
+								<i class="fa fa-navicon bg m-color-muted text-m"></i>
+							</button>
+							<div class="clearfix"></div>
+							<div class="collapse navbar-collapse" id="navbar1">
+								<ul class="navbar-nav">
+									<li class="nav-item pr-4 py-1" data-section-id="0">
+										<b>Home</b>
+									</li>
+									<li class="nav-item pr-4 py-1" data-section-id="1">
+										<b>About</b>
+									</li>
+									<li class="nav-item pr-4 py-1" data-section-id="2">
+										<b>Portfolio</b>
+									</li>
+									<li class="nav-item pr-4 py-1" data-section-id="3">
+										<b>Education</b>
+									</li>
+									<li class="nav-item pr-4 py-1" data-section-id="4">
+										<b>Blogs</b>
+									</li>
+									<li class="nav-item pr-4 py-1" data-section-id="5">
+										<b>Contact</b>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="m-bg-primary" style="height: 4px;"></div>
+					</div>
+					<div class="p-5 container-fluid">
+						<div class="text-center mb-5">
+							<div class="text-l font-fam-2 m-color-secondary-dark d-inline-block">
+								ABOUT
+								<div class="m-bg-secondary-dark mx-4" style="height: 5px;"></div>
+							</div>
+						</div>
+						<div class="my-5 mx-lg-5 mx-sm-3 row text-muted">
+							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0">
+								<div class="m-badge m-bg-primary position-relative">
+									<div class="m-badge-content text-white position-absolute" style="top: 16px; left: 16px;">
+										<i class="fa fa-rocket" style="font-size: 135%;"></i>
+									</div>
+								</div>
+								<div class="font-fam-2 text-s mt-2">Optimised</div>
+							</div>
+							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0">
+								<div class="m-badge m-bg-primary position-relative">
+									<div class="m-badge-content text-white position-absolute" style="top: 9px; left: 10px;">
+										<i class="fa fa-cubes" style="font-size: 125%;"></i>
+									</div>
+								</div>
+								<div class="font-fam-2 text-s mt-2">Modular</div>
+							</div>
+							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0">
+								<div class="m-badge m-bg-primary position-relative">
+									<div class="m-badge-content text-white position-absolute" style="top: 11px; left: 16px;">
+										<i class="fa fa-hand-o-up" style="font-size: 125%;"></i>
+									</div>
+								</div>
+								<div class="font-fam-2 text-s mt-2">Intuitive</div>
+							</div>
+							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0">
+								<div class="m-badge m-bg-primary position-relative">
+									<div class="m-badge-content text-white position-absolute" style="top: 11px; left: 26px;">
+										<i class="fa fa-lightbulb-o" style="font-size: 150%;"></i>
+									</div>
+								</div>
+								<div class="font-fam-2 text-s mt-2">Innovative</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-md-6">
+								<div class="image-container shadow-lg p-2 m-auto" id="dp">
+									<img src="./resources/dp_s.png" style="width: 100%; height: auto;">
+								</div>
+								<!-- About Me -->
+								<div class="text-s text-center text-muted mt-2 px-2">
+									<div class="text-m font-fam-2">Who's this guy?</div>
+									I'm an university student pursing bachalor's in computer science. I have a strong passion for programming and developing fast and intuitive applications. I'm currently working in the field of Augmented Reality(AR)
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<!-- HTML -->
+								<div class="row mt-xl-4">
+									<div class="col-3 text-xs m-bg-primary text-white text-center"><b>HTML</b></div>
+									<div class="col-9 p-0">
+										<div class="progress position-relative">
+											<div class="progress-bar m-bg-primary-d1" style="width: 90%;"></div>
+											<div class="position-absolute" style="right: 10px; top: 11px; font-size: 110%;">90%</div>
+										</div>
+									</div>
+								</div>
+								<!-- CSS -->
+								<div class="row mt-3 mt-xl-4">
+									<div class="col-3 text-xs m-bg-primary text-white text-center"><b>CSS</b></div>
+									<div class="col-9 p-0">
+										<div class="progress position-relative">
+											<div class="progress-bar m-bg-primary-d1" style="width: 90%;"></div>
+											<div class="position-absolute" style="right: 10px; top: 11px; font-size: 110%;">90%</div>
+										</div>
+									</div>
+								</div>
+								<!-- Java -->
+								<div class="row mt-3 mt-xl-4">
+									<div class="col-3 text-xs m-bg-primary text-white text-center"><b>Java</b></div>
+									<div class="col-9 p-0">
+										<div class="progress position-relative">
+											<div class="progress-bar m-bg-primary-d1" style="width: 80%;"></div>
+											<div class="position-absolute" style="right: 10px; top: 11px; font-size: 110%;">80%</div>
+										</div>
+									</div>
+								</div>
+								<!-- C# -->
+								<div class="row mt-3 mt-xl-4">
+									<div class="col-3 text-xs m-bg-primary text-white text-center"><b>C-Sharp</b></div>
+									<div class="col-9 p-0">
+										<div class="progress position-relative">
+											<div class="progress-bar m-bg-primary-d1" style="width: 60%;"></div>
+											<div class="position-absolute" style="right: 10px; top: 11px; font-size: 110%;">60%</div>
+										</div>
+									</div>
+								</div>
+								<!-- Javascript -->
+								<div class="row mt-3 mt-xl-4">
+									<div class="col-3 text-xs m-bg-primary text-white text-center"><b>JavaScript</b></div>
+									<div class="col-9 p-0">
+										<div class="progress position-relative">
+											<div class="progress-bar m-bg-primary-d1" style="width: 70%;"></div>
+											<div class="position-absolute" style="right: 10px; top: 11px; font-size: 110%;">70%</div>
+										</div>
+									</div>
+								</div>
+								<!-- NodeJS -->
+								<div class="row mt-3 mt-xl-4">
+									<div class="col-3 text-xs m-bg-primary text-white text-center"><b>NodeJS</b></div>
+									<div class="col-9 p-0">
+										<div class="progress position-relative">
+											<div class="progress-bar m-bg-primary-d1" style="width: 50%;"></div>
+											<div class="position-absolute" style="right: 10px; top: 11px; font-size: 110%;">50%</div>
+										</div>
+									</div>
+								</div>
+								<!-- AWS -->
+								<div class="row mt-3 mt-xl-4">
+									<div class="col-3 text-xs m-bg-primary text-white text-center"><b>AWS</b></div>
+									<div class="col-9 p-0">
+										<div class="progress position-relative">
+											<div class="progress-bar m-bg-primary-d1" style="width: 60%;"></div>
+											<div class="position-absolute" style="right: 10px; top: 11px; font-size: 110%;">60%</div>
+										</div>
+									</div>
+								</div>
+								<!-- Unity 3D -->
+								<div class="row mt-3 mt-xl-4">
+									<div class="col-3 text-xs m-bg-primary text-white text-center"><b>Unity 3D</b></div>
+									<div class="col-9 p-0">
+										<div class="progress position-relative">
+											<div class="progress-bar m-bg-primary-d1" style="width: 60%;"></div>
+											<div class="position-absolute" style="right: 10px; top: 11px; font-size: 110%;">60%</div>
+										</div>
+									</div>
+								</div>
+								<!-- AR Core -->
+								<div class="row mt-3 mt-xl-4">
+									<div class="col-3 text-xs m-bg-primary text-white text-center"><b>AR Core</b></div>
+									<div class="col-9 p-0">
+										<div class="progress position-relative">
+											<div class="progress-bar m-bg-primary-d1" style="width: 70%;"></div>
+											<div class="position-absolute" style="right: 10px; top: 11px; font-size: 110%;">70%</div>
+										</div>
+									</div>
+								</div>
+								<!-- Android -->
+								<div class="row mt-3 mt-xl-4">
+									<div class="col-3 text-xs m-bg-primary text-white text-center"><b>Android</b></div>
+									<div class="col-9 p-0">
+										<div class="progress position-relative">
+											<div class="progress-bar m-bg-primary-d1" style="width: 70%;"></div>
+											<div class="position-absolute" style="right: 10px; top: 11px; font-size: 110%;">70%</div>
+										</div>
+									</div>
+								</div>
+								<div class="text-center text-xs m-color-muted mt-1">
+									<i>"It's all relative"</i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- SECTION - 3 -->
+		<div class="section-container m-bg-secondary">
+			<section id="section-3" class="section" style="min-height: 100%;">
+				<div class="p-5 container-fluid">
+					<div class="text-center my-5">
+						<div class="text-l font-fam-2 m-color-secondary-dark d-inline-block">
+							PORTFOLIO
+							<div class="m-bg-secondary-dark mx-4" style="height: 5px;"></div>
+						</div>
+					</div>
+					<div class="row px-5 text-center text-m">
+						<!--
+							Nlyze	Teleport	CBAuth
+							    Lexi    Space Dragon
+						-->
+						<div class="col-12 col-md-4 position-relative p-0 portfolio-card" style="height: 300px;">
+							<div class="w-100 h-100 portfolio-bg" style=" background-image: url(./resources/nlyze_cover.svg); background-size: cover;"></div>
+							<a href="https://github.com/chaitanyabhardwaj/nlyze-web" target="_blank" class="portfolio-hover position-absolute w-100" style="top: 35%; left: 0%;">
+								<div>
+									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
+									<div class="d-inline-block align-middle font-fam-2 m-color-primary">Go to<br>Nlyze</div>
+									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
+								</div>
+							</a>
+						</div>
+						<div class="col-12 col-md-4 position-relative p-0 portfolio-card" style="height: 300px;">
+							<div class="w-100 h-100 portfolio-bg" style=" background-image: url(./resources/tele_cover.svg); background-size: cover;"></div>
+							<a href="https://github.com/chaitanyabhardwaj/nlyze-web" target="_blank" class="portfolio-hover position-absolute w-100" style="top: 35%; left: 0%;">
+								<div>
+									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
+									<div class="d-inline-block align-middle font-fam-2 m-color-primary">Go to<br>Teleport</div>
+									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
+								</div>
+							</a>
+						</div>
+						<div class="col-12 col-md-4 position-relative p-0 portfolio-card" style="height: 300px;">
+							<div class="w-100 h-100 portfolio-bg" style=" background-image: url(./resources/cbauth_cover.svg); background-size: cover;"></div>
+							<a href="https://github.com/chaitanyabhardwaj/nlyze-web" target="_blank" class="portfolio-hover position-absolute w-100" style="top: 35%; left: 0%;">
+								<div>
+									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
+									<div class="d-inline-block align-middle font-fam-2 m-color-primary">Go to<br>CBAuth</div>
+									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
+								</div>
+							</a>
+						</div>
+						<div class="col-12 col-md-2"></div>
+						<div class="col-12 col-md-4 position-relative p-0 portfolio-card" style="height: 300px;">
+							<div class="w-100 h-100 portfolio-bg" style=" background-image: url(./resources/nlyze_cover.svg); background-size: cover;"></div>
+							<a href="https://github.com/chaitanyabhardwaj/nlyze-web" target="_blank" class="portfolio-hover position-absolute w-100" style="top: 35%; left: 0%;">
+								<div>
+									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
+									<div class="d-inline-block align-middle font-fam-2 m-color-primary">Go to<br>Lexi</div>
+									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
+								</div>
+							</a>
+						</div>
+						<div class="col-12 col-md-4 position-relative p-0 portfolio-card" style="height: 300px;">
+							<div class="w-100 h-100 portfolio-bg" style=" background-image: url(./resources/nlyze_cover.svg); background-size: cover;"></div>
+							<a href="https://github.com/chaitanyabhardwaj/nlyze-web" target="_blank" class="portfolio-hover position-absolute w-100" style="top: 35%; left: 0%;">
+								<div>
+									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 35px;"></div>
+									<div class="d-inline-block align-middle font-fam-2 m-color-primary">Go to<br>Space Dragon</div>
+									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 35px;"></div>
+								</div>
+							</a>
+						</div>
+						<div class="col-12 col-md-2"></div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- SECTION - 4 -->
+		<div class="section-container">
+			<section id="section-4" class="section" style="min-height: 100%;">
+				<div class="p-5 container-fluid">
+					<div class="text-center my-5">
+						<div class="text-l font-fam-2 m-color-secondary-dark d-inline-block">
+							EDUCATION
+							<div class="m-bg-secondary-dark mx-4" style="height: 5px;"></div>
+						</div>
+					</div>
+					<div class="mx-md-5" style="padding: 0px 100px;">
+						<!-- Graduation -->
+						<div class="card">
+							<div class="card-header px-5">
+								<div class="text-m m-color-primary font-fam-2">Graduation</div>
+							</div>
+							<div class="card-body px-5">
+								<div>
+									<i class="fa fa-graduation-cap"></i>
+									<b>Bachelor's Of Technology(B. Tech)</b><br>Stream - Computer Science And Engineering<br>Specialisation In Data Science
+								</div>
+								<div class="mt-3 d-inline-block">
+									<i class="fa fa-university"></i>
+									<b>Graphic Era University</b><br>Passing Year - 2021
+								</div>
+								<div class="float-right d-inline-block">
+									7.5 CGPA
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="m-auto m-bg-secondary" style=" width: 1px; height: 70px;"></div>
+						<!-- Intermediate -->
+						<div class="card">
+							<div class="card-header px-5">
+								<div class="text-m m-color-primary font-fam-2">Intermediate</div>
+							</div>
+							<div class="card-body px-5">
+								<div>
+									<i class="fa fa-graduation-cap"></i>
+									<b>ISC Board</b><br>English, Mathematics, Computer Science, Science
+								</div>
+								<div class="mt-3 d-inline-block">
+									<i class="fa fa-university"></i>
+									<b>St. Jude's School</b><br>Passing Year - 2016
+								</div>
+								<div class="float-right d-inline-block">
+									83.5%
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="m-auto m-bg-secondary" style=" width: 1px; height: 70px;"></div>
+						<!-- High School -->
+						<div class="card">
+							<div class="card-header px-5">
+								<div class="text-m m-color-primary font-fam-2">High School</div>
+							</div>
+							<div class="card-body px-5">
+								<div>
+									<i class="fa fa-graduation-cap"></i>
+									<b>ICSE Board</b><br>English, Mathematics, Computer Science, Science, Social Studies
+								</div>
+								<div class="mt-3 d-inline-block">
+									<i class="fa fa-university"></i>
+									<b>St. Jude's School</b><br>Passing Year - 2014
+								</div>
+								<div class="float-right d-inline-block">
+									88.6%
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<!-- Certificates -->
+					<div class="mx-auto mt-5 mb-4 text-m m-bg-primary text-center font-fam-2 text-white" style="width: 200px;">Certificates</div>
+					<div class="d-flex justify-content-center flex-wrap mx-md-5">
+						<div class="mx-2">
+							<a href="https://www.youracclaim.com/badges/5eac4626-0221-4697-91d9-c1e84bc975c6/" target="_blank" class="image-container text-decoration-none">
+								<div class="certificate-badge m-bg-cisco">
+									<!--header-->
+									<div class="d-inline-block text-white text-center">
+										<i class="fa fa-building-o"></i><br>
+										<span style="font-family: Futura;">CISCO</span>
+									</div>
+									<div class="d-inline-block m-color-cisco-light float-right">Networking<br>Academy</div>
+									<div class="clearfix"></div>
+									<!--body-->
+									<div class="m-bg-cisco-light p-1" style="height: 100px; border-radius: 10px;">
+										<div class="text-white text-center">
+											<i class="fa fa-certificate m-color-cisco"></i><br>
+											<b>Introduction To Cyber Security</b>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="mx-2">
+							<a href="https://www.coursera.org/account/accomplishments/verify/K5D6UGQN5XHR" target="_blank" class="image-container text-decoration-none">
+								<div class="certificate-badge m-bg-google">
+									<!--header-->
+									<div class="d-inline-block text-white text-center">
+										<i class="fa fa-building-o"></i><br>
+										<span style="font-family: Futura;">GOOGLE</span>
+									</div>
+									<div class="d-inline-block m-color-google-light float-right">Daydream</div>
+									<div class="clearfix"></div>
+									<!--body-->
+									<div class="m-bg-google-light p-1" style="height: 100px; border-radius: 10px;">
+										<div class="text-white text-center">
+											<i class="fa fa-certificate m-color-google"></i><br>
+											<b style="font-size: 90%;">Introduction To Augmented Reality And ARCore</b>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- SECTION - 5 -->
+		<div class="section-container m-bg-secondary">
+			<section id="section-5" class="section" style="min-height: 100%;">
+				<div class="p-5 container-fluid">
+					<div class="text-center my-5">
+						<div class="text-l font-fam-2 m-color-secondary-dark d-inline-block">
+							BLOGS
+							<div class="m-bg-secondary-dark mx-4" style="height: 5px;"></div>
+						</div>
+					</div>
+					<div class="row px-5 text-center">
+						<div class="col-12">
+							<div class="d-inline-block" style="width: 315px; height: 200px;">
+								<a href="https://www.sciencedirect.com/science/article/pii/S1877050920307560" class="text-decoration-none">
+									<img src="./resources/blog_1.png"  alt="Robust Sports Image Classification Using InceptionV3 and Neural Networks" style="width: 100%; height: auto;">
+									<div class="text-dark"><b>Robust Sports Image Classification Using InceptionV3 and Neural Networks</b></div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- SECTION - 6 -->
+		<div class="section-container m-bg-primary-dark-d1 position-relative">
+			<section id="section-6" class="section" style="min-height: 100%;">
+				<div class="p-5 container-fluid">
+					<div class="text-center my-5">
+						<div class="text-l font-fam-2 text-white d-inline-block">
+							CONTACT ME
+							<div class="m-bg-white mx-4" style="height: 5px;"></div>
+						</div>
+					</div>
+					<div class="mb-5 text-white text-m">
+						<!--email-->
+						<div class="my-4 text-center" style="border-radius: 10px;">
+							<div class="d-inline-block py-2 m-bg-primary text-center" style="border-radius: 10px 0px 0px 10px; width: 100px;">Email</div>
+							<div class="d-inline-block py-2 m-bg-secondary-dark" style="border-radius: 0px 10px 10px 0px; width: 500px;">
+								<a href="mailto:chaitanyabhardwaj89gmail.com" class="text-white">chaitanyabhardwaj89@gmail.com</a>
+							</div>
+						</div>
+						<div class="my-4 text-center" style="border-radius: 10px;">
+							<div class="d-inline-block py-2 m-bg-primary text-center" style="border-radius: 10px 0px 0px 10px; width: 100px;">Discord</div>
+							<div class="d-inline-block py-2 m-bg-secondary-dark" style="border-radius: 0px 10px 10px 0px; width: 500px;">Chaitanya#1796</div>
+						</div>
+					</div>
+				</div>
+				<!-- Other Networks -->
+				<div style="height: 50px;"></div>
+				<div class="m-bg-primary-dark container-fluid p-4 position-absolute w-100" style="bottom: 0px;">
+					<div class="position-absolute m-bg-accent text-white text-center nav-item" data-section-id="0" style="width: 40px; height: 40px; top: -20px; left: 48%;">
+						<i class="fa fa-angle-double-up text-l"></i>
+					</div>
+					<div class="text-center text-l">
+						<a href="https://www.linkedin.com/in/chaitanya-bhardwaj-64657a132/" target="_blank" class="mx-2 m-color-secondary-dark hover-white">
+							<i class="fa fa-linkedin-square"></i>
+						</a>
+						<a href="https://www.facebook.com/chaitanya.bhardwaj.10" target="_blank" class="mx-2 m-color-secondary-dark hover-white">
+							<i class="fa fa-facebook-square"></i>
+						</a>
+						<a href="https://github.com/chaitanyabhardwaj" target="_blank" class="mx-2 m-color-secondary-dark hover-white">
+							<i class="fa fa-github-square"></i>
+						</a>
+						<a href="https://stackoverflow.com/users/5804813/chaitanya?tab=profile" target="_blank" class="mx-2 m-color-secondary-dark hover-white">
+							<i class="fa fa-stack-exchange"></i>
+						</a>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</body></html>
+
+
+
+
+
+
+
