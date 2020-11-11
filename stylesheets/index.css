@@ -97,6 +97,8 @@ a { text-decoration: none !important; }
 .portolio-bg, .portfolio-hover { transition: all 0.3s; }
 .portfolio-card:hover .portfolio-bg { filter: blur(5px); -webkit-filter: blur(5px); }
 .portfolio-card:hover .portfolio-hover { opacity: 1; }
+.contact-info-container { width: 500px; }
+.padding-100 { padding: 100px !important; }
 
 /*tablet devices*/
 @media screen and (max-width: 1200px) {
@@ -107,7 +109,8 @@ a { text-decoration: none !important; }
 	.text-xl { font-size: 45px !important; }
 	.navbar { color: var(--muted-color) !important; }
 	.progress, .progress-bar, .progress-bar-title{ height: 22px; }
-
+	.contact-info-container { width: 320px; }
+	.padding-100 { padding: 50px !important; }
 	#dp { height: 220px; width: 200px; }
 }
 
