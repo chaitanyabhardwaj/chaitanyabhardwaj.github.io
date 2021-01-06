@@ -93,13 +93,10 @@ a { text-decoration: none !important; }
 .certificate-badge { width: 170px; height: 170px; border-radius: 10px; padding: 10px; }
 .hover-white:hover { color: var(--white) !important; }
 .clearfix { clear: both !important; }
-<<<<<<< HEAD
 .portfolio-card { height: 300px; flex: 0 0 300px; }
 .portfolio-hover { opacity: 0; background-color: rgba(50,50,75, 0.5); transition: all 0.3s; }
-=======
 .portfolio-hover { opacity: 0; background-color: rgba(50,50,75,0.5); }
 .portolio-bg, .portfolio-hover { transition: all 0.3s; }
->>>>>>> 2600e68e3bc866a300fb61e4a465ab407c27f137
 .portfolio-card:hover .portfolio-bg { filter: blur(5px); -webkit-filter: blur(5px); }
 .portfolio-card:hover .portfolio-hover { opacity: 1; }
 .contact-title-container { border-radius: 10px 0px 0px 10px; width: 100px; }
