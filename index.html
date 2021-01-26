@@ -33,7 +33,7 @@
 			//copy discord text to system clipboard on click
 			let dText = $(e.currentTarget).text();
 			navigator.clipboard.writeText(dText).then(() => {
-				inst.displayDialog(`Copied! ${dText}`, 'error');
+				inst.displayDialog(`Copied! ${dText}`, 'success');
 			}, (err) => {
 				inst.displayDialog(err, 'error');
 				console.log(err);
