@@ -16,21 +16,66 @@
 <script src="./scripts/section_manager.js"></script>
 <script>
 
+	'use strict';
+
+	function MyApp(sectionManager) {
+		const inst = this;
+		//dom shortcuts
+		this.contactDiscord = $('.contact-discord');
+		this.viewWorkBtn = $('#view-work');
+		this.wrapper = $('.outer-wrapper');
+		//event listeners
+		this.viewWorkBtn.click(() => {
+			sectionManager.goToSection(1);
+		});
+
+		this.contactDiscord.click(function(e) {
+			//copy discord text to system clipboard on click
+			let dText = $(e.currentTarget).text();
+			navigator.clipboard.writeText(dText).then(() => {
+				inst.displayDialog(`Copied! ${dText}`, 'error');
+			}, (err) => {
+				inst.displayDialog(err, 'error');
+				console.log(err);
+			});
+		});
+	};
+
+	MyApp.prototype.displayDialog = function(dialogText, dialogType) {
+		if(typeof dialogType != "string") return;
+		dialogType = dialogType.toUpperCase();
+		var dialogElement;
+		switch(dialogType) {
+			case 'SUCCESS' : dialogElement = $('.dialog-box-success'); break;
+			case 'ERROR' : dialogElement = $('.dialog-box-error'); break;
+			default : dialogElement = null;
+		}
+		if(dialogElement !== null) {
+			dialogElement.text(dialogText);
+			this.wrapper.removeClass('d-none');
+			dialogElement.removeClass('d-none');
+			setTimeout(() => {
+				this.wrapper.addClass('d-none');
+				dialogElement.addClass('d-none');
+			}, 3000);
+		}
+	};
+
 	$(document).ready(() => {
 		//setup sm
 		const sm = new SectionManager('.section');
 		sm.setNavbar('.navbar-container', '.nav-item');
 		//intial call when setup ready
 		sm.init();
-		this.viewWorkBtn = $('#view-work');
-		this.viewWorkBtn.click(() => {
-			sm.goToSection(1);
-		});
+		const app = new MyApp(sm);
 	});
 
 </script>
 </head><body>
-	<div class="outer-wrapper"></div>
+	<div class="outer-wrapper d-none">
+		<div class="dialog-box dialog-box-success w-100 position-absolute p-2 m-bg-success-dark text-center m-color-muted d-none text-s font-weight-bold"></div>
+		<div class="dialog-box dialog-box-error w-100 position-absolute p-2 m-bg-error-dark text-center m-color-muted d-none text-s font-weight-bold"></div>
+	</div>
 	<div class="outer-container">
 		<!-- SECTION - 1 -->
 		<div class="section-container m-bg-primary-dark h-100">
@@ -474,12 +519,12 @@
 						<div class="my-4 text-center">
 							<div class="d-inline-block py-2 m-bg-primary text-center contact-title-container">Email</div>
 							<div class="d-inline-block py-2 m-bg-secondary-dark contact-info-container">
-								<a href="mailto:chaitanyabhardwaj89gmail.com" class="text-white">chaitanyabhardwaj89@gmail.com</a>
+								<a href="mailto:chaitanyabhardwaj89gmail.com" class="text-white contact-email">chaitanyabhardwaj89@gmail.com</a>
 							</div>
 						</div>
 						<div class="my-4 text-center">
 							<div class="d-inline-block py-2 m-bg-primary text-center contact-title-container">Discord</div>
-							<div class="d-inline-block py-2 m-bg-secondary-dark contact-info-container">Chaitanya#1796</div>
+							<div class="d-inline-block py-2 m-bg-secondary-dark contact-info-container contact-discord cursor-pointer">Chaitanya#1796</div>
 						</div>
 					</div>
 				</div>
