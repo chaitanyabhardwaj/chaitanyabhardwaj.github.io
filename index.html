@@ -5,7 +5,7 @@
 	Vendor prefix CSS
 -->
 
-<!DOCTYPE html><html lang="en-US" dir="ltr"><head><meta charset="utf-8" /><title></title><meta name="description" content="Chaitanya Bhardwaj, portfolio of a full stack developer. Have a strong passion for programming and developing fast and intuitive applications. Currently working in the field of Game development(Unity) and Augmented Reality(AR). This porfolio provides a comprehensive view of the projects I am working on or have completed. Contact me for solo projects, collaborations or job openings or just get in touch via discord."/><meta name="author" content="Chaitanya Bhardwaj"/><base href="/" target="_self"/><meta name="referrer" content="origin-when-cross-origin"/>
+<!DOCTYPE html><html lang="en-US" dir="ltr"><head><meta charset="utf-8" /><title></title><meta name="description" content="Chaitanya Bhardwaj, portfolio of a full stack developer. Have a strong passion for programming and developing fast and intuitive applications. Currently working in the field of Game development(Unity) and Augmented Reality(AR). This portfolio provides a comprehensive view of the projects I am working on or have completed. Contact me for solo projects, collaborations or job openings or just get in touch via discord."/><meta name="author" content="Chaitanya Bhardwaj"/><base href="/" target="_self"/><meta name="referrer" content="origin-when-cross-origin"/>
 <!--<link rel="icon" type="image/x-icon" href="resources/favicon.jpg" />-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -24,6 +24,13 @@
 		this.contactDiscord = $('.contact-discord');
 		this.viewWorkBtn = $('#view-work');
 		this.wrapper = $('.outer-wrapper');
+		this.outerContainer = $('.outer-container');
+
+		this.modelAll = $('.m-model');
+		this.modelActive = false;
+		this.portfolioHover = $('.portfolio-hover');
+		this.modelCloseBtn = $('.m-model-close-btn');
+
 		//event listeners
 		this.viewWorkBtn.click(() => {
 			sectionManager.goToSection(1);
@@ -38,6 +45,17 @@
 				inst.displayDialog(err, 'error');
 				console.log(err);
 			});
+		});
+
+		this.portfolioHover.click(function(e) {
+			const modelID = $(e.currentTarget).data('model-id');
+			if(modelID < 0) return;
+			inst.displayModel(modelID);
+		});
+
+		this.modelCloseBtn.click(function() {
+			if(inst.modelActive)
+				inst.hideModel();
 		});
 	};
 
@@ -61,6 +79,21 @@
 		}
 	};
 
+	MyApp.prototype.displayModel = function(modelID) {
+		const modelElement = $('.m-model').filter(`[data-model-id='${modelID}']`);
+		this.wrapper.removeClass('d-none');
+		modelElement.removeClass('d-none');
+		this.outerContainer.addClass('m-model-hide');
+		this.modelActive = true;
+	};
+
+	MyApp.prototype.hideModel = function() {
+		this.modelAll.addClass('d-none');
+		this.wrapper.addClass('d-none');
+		this.outerContainer.removeClass('m-model-hide');
+		this.modelActive = false;
+	};
+
 	$(document).ready(() => {
 		//setup sm
 		const sm = new SectionManager('.section');
@@ -75,6 +108,206 @@
 	<div class="outer-wrapper d-none">
 		<div class="dialog-box dialog-box-success w-100 position-absolute p-2 m-bg-success-dark text-center m-color-muted d-none text-s font-weight-bold"></div>
 		<div class="dialog-box dialog-box-error w-100 position-absolute p-2 m-bg-error-dark text-center m-color-muted d-none text-s font-weight-bold"></div>
+		<!--nlyze model start-->
+		<div class="position-absolute m-model text-center container d-none" data-model-id="0">
+			<div class="m-model-close-btn float-right text-m cursor-pointer m-bg-accent px-2 text-white">
+				<i class="fa fa-close"></i>
+			</div>
+			<div class="clearfix"></div>
+			<div class="row p-5" style="background-color: rgba(255,255,255,0.3);">
+				<div class="m-col-s-0 col-md-4">
+					<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card-model m-bg-primary-dark p-3">
+						<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+							<div class="w-100 h-50 py-2 text-white text-m">
+								Nlyze
+								<div class="text-s mx-4 my-2 py-2" style="border-top: 1px solid white;">
+									Data Analytical Website
+								</div>
+							</div>
+							<div class="w-100 h-50" style=" background-image: url(./resources/nlyze_cover.png); background-size: cover;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-8 text-left pt-5 font-weight-bold">
+					<div class="text-m my-4">
+						Nlyze - Realtime Data Analytical Platform
+					</div>
+					<div class="text-s">
+						<ul>
+							<li>
+								Web and IoT based factory data analytical platform built on Google Firebase.
+							</li>
+							<li>
+								Products such as Factory Model and Real Time Collector helps in quickly finding and analysing daily or weekly or monthly losses.
+							</li>
+							<li>
+								Used in manufacturing plants to increase TMP and OEE.
+							</li>
+						</ul>
+					</div>
+					<div class="text-s">
+						<a href="https://nlyze.co" target="_blank">
+							<button type="button" class="m-btn m-btn-primary m-bg-primary px-4 py-2">
+								Website <i class="fa fa-globe"></i>
+							</button>
+						</a>
+						<a href="https://github.com/chaitanyabhardwaj/nlyze-web" target="_blank">
+							<button type="button" class="m-btn m-btn-primary m-bg-primary px-4 py-2">
+								Github <i class="fa fa-github-square"></i>
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--nlyze model end-->
+		<!--teleport model start-->
+		<div class="position-absolute m-model text-center container d-none" data-model-id="2">
+			<div class="m-model-close-btn float-right text-m cursor-pointer m-bg-accent px-2 text-white">
+				<i class="fa fa-close"></i>
+			</div>
+			<div class="clearfix"></div>
+			<div class="row p-5" style="background-color: rgba(255,255,255,0.3);">
+				<div class="m-col-s-0 col-md-4">
+					<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card-model m-bg-primary-dark p-3">
+						<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+							<div class="w-100 h-50 py-2 text-white text-m">
+								Teleport
+								<div class="text-s mx-4 my-2 py-2" style="border-top: 1px solid white;">
+									Data Transferring
+								</div>
+							</div>
+							<div class="w-100 h-50" style=" background-image: url(./resources/teleport_cover.png); background-size: cover;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-8 text-left pt-5 font-weight-bold">
+					<div class="text-m my-4">
+						Teleport - Network Operation Library & Application
+					</div>
+					<div class="text-s">
+						<ul>
+							<li>
+								Data transfer over a network using TCP/IP protocol and socket programming.
+							</li>
+							<li>
+								Application built for Windows, MacOS and Android platforms.
+							</li>
+							<li>
+								Flexible enough to perform any kind of network operation by extending the library and adding just your business logic.
+							</li>
+						</ul>
+					</div>
+					<div class="text-s">
+						<a href="https://github.com/chaitanyabhardwaj/Teleport" target="_blank">
+							<button type="button" class="m-btn m-btn-primary m-bg-primary px-4 py-2">
+								Github <i class="fa fa-github-square"></i>
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--teleport model end-->
+		<!--auth helper model start-->
+		<div class="position-absolute m-model text-center container d-none" data-model-id="3">
+			<div class="m-model-close-btn float-right text-m cursor-pointer m-bg-accent px-2 text-white">
+				<i class="fa fa-close"></i>
+			</div>
+			<div class="clearfix"></div>
+			<div class="row p-5" style="background-color: rgba(255,255,255,0.3);">
+				<div class="m-col-s-0 col-md-4">
+					<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card-model m-bg-primary-dark p-3">
+						<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+							<div class="w-100 h-50 py-2 text-white text-m">
+								Auth Helper
+								<div class="text-s mx-4 my-2 py-2" style="border-top: 1px solid white;">
+									Authentication System
+								</div>
+							</div>
+							<div class="w-100 h-50" style=" background-image: url(./resources/cbauth_cover.png); background-size: cover;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-8 text-left pt-4 font-weight-bold">
+					<div class="text-m my-4">
+						Auth Helper - User Authentication For Servlets
+					</div>
+					<div class="text-s">
+						<ul>
+							<li>
+								An authentication library built to be implemented in Java based backend(Servlets & JSPs).
+							</li>
+							<li>
+								Useful to minimise the work of creating a backend system by reducing the need to write raw MySQL from little to none.
+							</li>
+							<li>
+								The system encapsulates database operations and can perform MySQL queries by function calls while providing a built-in backend secure user authentication system.
+							</li>
+						</ul>
+					</div>
+					<div class="text-s">
+						<a href="https://github.com/chaitanyabhardwaj/CBAuth" target="_blank">
+							<button type="button" class="m-btn m-btn-primary m-bg-primary px-4 py-2">
+								Github <i class="fa fa-github-square"></i>
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--auth helper model end-->
+		<!--dawn model start-->
+		<div class="position-absolute m-model text-center container d-none" data-model-id="1">
+			<div class="m-model-close-btn float-right text-m cursor-pointer m-bg-accent px-2 text-white">
+				<i class="fa fa-close"></i>
+			</div>
+			<div class="clearfix"></div>
+			<div class="row p-5" style="background-color: rgba(255,255,255,0.3);">
+				<div class="m-col-s-0 col-md-4">
+					<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card-model m-bg-primary-dark p-3">
+						<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+							<div class="w-100 h-50 py-2 text-white text-m">
+								Dawn
+								<div class="text-s mx-4 my-2 py-2" style="border-top: 1px solid white;">
+									Virtual Scene Generator
+								</div>
+							</div>
+							<div class="w-100 h-50" style=" background-image: url(./resources/dawn_cover.png); background-size: cover;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-8 text-left pt-4 font-weight-bold">
+					<div class="text-m my-4">
+						Dawn - Smart Virtual Scene Generator
+					</div>
+					<div class="text-s">
+						<ul>
+							<li>
+								Virtual 3D scene generator software built with Unity.
+							</li>
+							<li>
+								Makes smart decisions to create an authentic and realistic environment.
+							</li>
+							<li>
+								Has augmented reality feature which brings out the virtual environment into real word.
+							</li>
+							<li>
+								Built for Windows, MacOS, Android and iOS.
+							</li>
+						</ul>
+					</div>
+					<div class="text-s">
+						<a href="https://github.com/chaitanyabhardwaj/Dawn" target="_blank">
+							<button type="button" class="m-btn m-btn-primary m-bg-primary px-4 py-2">
+								Github <i class="fa fa-github-square"></i>
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--dawn model end-->
 	</div>
 	<div class="outer-container">
 		<!-- SECTION - 1 -->
@@ -133,7 +366,7 @@
 					</div>
 					<div class="p-5 container-fluid">
 						<div class="text-center mb-5">
-							<div class="text-l font-fam-2 m-color-secondary-dark d-inline-block">
+							<div class="text-ml font-fam-2 m-color-secondary-dark d-inline-block">
 								ABOUT
 								<div class="m-bg-secondary-dark mx-4" style="height: 5px;"></div>
 							</div>
@@ -145,7 +378,7 @@
 										<i class="fa fa-rocket" style="font-size: 135%;"></i>
 									</div>
 								</div>
-								<div class="font-fam-2 text-s mt-2">Optimised</div>
+								<div class="text-s mt-2"><b>Optimised</b></div>
 							</div>
 							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0">
 								<div class="m-badge m-bg-primary position-relative">
@@ -153,7 +386,7 @@
 										<i class="fa fa-cubes" style="font-size: 125%;"></i>
 									</div>
 								</div>
-								<div class="font-fam-2 text-s mt-2">Modular</div>
+								<div class="text-s mt-2"><b>Modular</b></div>
 							</div>
 							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0">
 								<div class="m-badge m-bg-primary position-relative">
@@ -161,7 +394,7 @@
 										<i class="fa fa-hand-o-up" style="font-size: 125%;"></i>
 									</div>
 								</div>
-								<div class="font-fam-2 text-s mt-2">Intuitive</div>
+								<div class="text-s mt-2"><b>Intuitive</b></div>
 							</div>
 							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0">
 								<div class="m-badge m-bg-primary position-relative">
@@ -169,7 +402,7 @@
 										<i class="fa fa-lightbulb-o" style="font-size: 150%;"></i>
 									</div>
 								</div>
-								<div class="font-fam-2 text-s mt-2">Innovative</div>
+								<div class="text-s mt-2"><b>Innovative</b></div>
 							</div>
 						</div>
 						<div class="row">
@@ -180,7 +413,7 @@
 								<!-- About Me -->
 								<div class="text-s text-center text-muted mt-4 px-2">
 									<div class="text-m font-fam-2">Who's this guy?</div>
-									I'm an university student pursing bachalor's in computer science. I have a strong passion for programming and developing fast and intuitive applications. I'm currently working in the field of Augmented Reality(AR)
+									I'm an university student pursing bachalor's in computer science. I have a strong passion for programming and developing fast and intuitive applications. I'm currently developing a major project in the field of Augmented Reality(AR)
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
@@ -294,69 +527,71 @@
 			</section>
 		</div>
 		<!-- SECTION - 3 -->
-		<div class="section-container m-bg-secondary">
+		<div class="section-container m-bg-primary-light">
 			<section id="section-3" class="section" style="min-height: 100%;">
 				<div class="p-5 container-fluid">
-					<div class="text-center my-5">
-						<div class="text-l font-fam-2 m-color-secondary-dark d-inline-block">
+					<div class="text-center mt-2 mb-5">
+						<div class="text-ml font-fam-2 m-color-secondary-dark d-inline-block">
 							PORTFOLIO
 							<div class="m-bg-secondary-dark mx-4" style="height: 5px;"></div>
 						</div>
 					</div>
-					<div class="d-flex flex-wrap flex-column flex-md-row padding-100 justify-content-center text-center text-m">
-						<!--
-							Nlyze	Teleport	CBAuth
-							Lexi    Space Dragon
-						-->
-						<div class="position-relative mx-2 mx-sm-5 mx-md-0 mb-2 mb-md-0 portfolio-card">
-							<div class="w-100 h-100 portfolio-bg" style=" background-image: url(./resources/nlyze_cover.jpg); background-size: cover;"></div>
-							<a href="https://github.com/chaitanyabhardwaj/nlyze-web" target="_blank" class="portfolio-hover position-absolute w-100" style="top: 35%; left: 0%;">
-								<div>
-									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
-									<div class="d-inline-block align-middle font-fam-2 m-color-primary">Go to<br>Nlyze</div>
-									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
+					<div class="d-flex flex-wrap flex-column flex-md-row justify-content-center text-center text-m">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3">
+							<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+								<div class="w-100 h-50 py-2 text-white">
+									Nlyze
+									<div class="text-s mx-4 my-2 py-2" style="border-top: 1px solid white;">
+										Data Analytical Website
+									</div>
 								</div>
-							</a>
+								<div class="w-100 h-50" style=" background-image: url(./resources/nlyze_cover.png); background-size: cover;"></div>
+							</div>
+							<div class="portfolio-hover d-inline-block align-middle font-fam-2 m-color-accent position-absolute w-100 cursor-pointer" data-model-id="0">
+								Expand
+							</div>
 						</div>
-						<div class="position-relative mx-2 mx-sm-5 mx-md-0 mb-2 mb-md-0 portfolio-card">
-							<div class="w-100 h-100 portfolio-bg" style=" background-image: url(./resources/teleport_cover.jpg); background-size: cover;"></div>
-							<a href="https://github.com/chaitanyabhardwaj/Teleport" target="_blank" class="portfolio-hover position-absolute w-100" style="top: 35%; left: 0%;">
-								<div>
-									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
-									<div class="d-inline-block align-middle font-fam-2 m-color-primary">Go to<br>Teleport</div>
-									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3">
+							<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+								<div class="w-100 h-50 py-2 text-white">
+									Dawn
+									<div class="text-s mx-4 my-2 py-2" style="border-top: 1px solid white;">
+										Virtual Scene Generator(AR)
+									</div>
 								</div>
-							</a>
+								<div class="w-100 h-50" style=" background-image: url(./resources/dawn_cover.png); background-size: cover;"></div>
+							</div>
+							<div class="portfolio-hover d-inline-block align-middle font-fam-2 m-color-accent position-absolute w-100 cursor-pointer" data-model-id="1">
+								Expand
+							</div>
 						</div>
-						<div class="position-relative mx-2 mx-sm-5 mx-md-0 mb-2 mb-md-0 portfolio-card">
-							<div class="w-100 h-100 portfolio-bg" style=" background-image: url(./resources/cbauth_cover.jpg); background-size: cover;"></div>
-							<a href="https://github.com/chaitanyabhardwaj/CBAuth" target="_blank" class="portfolio-hover position-absolute w-100" style="top: 35%; left: 0%;">
-								<div>
-									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
-									<div class="d-inline-block align-middle font-fam-2 m-color-primary">Go to<br>CBAuth</div>
-									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3">
+							<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+								<div class="w-100 h-50 py-2 text-white">
+									Teleport
+									<div class="text-s mx-4 my-2 py-2" style="border-top: 1px solid white;">
+										Data Transferring
+									</div>
 								</div>
-							</a>
+								<div class="w-100 h-50" style=" background-image: url(./resources/teleport_cover.png); background-size: cover;"></div>
+							</div>
+							<div class="portfolio-hover d-inline-block align-middle font-fam-2 m-color-accent position-absolute w-100 cursor-pointer"data-model-id="2">
+								Expand
+							</div>
 						</div>
-						<div class="position-relative mx-2 mx-sm-5 mx-md-0 mb-2 mb-md-0 portfolio-card">
-							<div class="w-100 h-100 portfolio-bg" style=" background-image: url(./resources/lexi_cover.jpg); background-size: cover;"></div>
-							<a href="https://github.com/chaitanyabhardwaj/lexi" target="_blank" class="portfolio-hover position-absolute w-100" style="top: 35%; left: 0%;">
-								<div>
-									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
-									<div class="d-inline-block align-middle font-fam-2 m-color-primary">Go to<br>Lexi</div>
-									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 60px;"></div>
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3">
+							<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+								<div class="w-100 h-50 py-2 text-white">
+									Auth Helper
+									<div class="text-s mx-4 my-2 py-2" style="border-top: 1px solid white;">
+										Authentication System
+									</div>
 								</div>
-							</a>
-						</div>
-						<div class="position-relative mx-2 mx-sm-5 mx-md-0 mb-2 mb-md-0 portfolio-card">
-							<div class="w-100 h-100 portfolio-bg" style=" background-image: url(./resources/spaced_cover.jpg); background-size: cover;"></div>
-							<a href="https://github.com/chaitanyabhardwaj/nlyze-web" target="_blank" class="portfolio-hover position-absolute w-100" style="top: 35%; left: 0%;">
-								<div>
-									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 35px;"></div>
-									<div class="d-inline-block align-middle font-fam-2 m-color-primary">Go to<br>Space Dragon</div>
-									<div class="d-inline-block m-bg-primary" style="height: 2px; width: 35px;"></div>
-								</div>
-							</a>
+								<div class="w-100 h-50" style=" background-image: url(./resources/cbauth_cover.png); background-size: cover;"></div>
+							</div>
+							<div class="portfolio-hover d-inline-block align-middle font-fam-2 m-color-accent position-absolute w-100 cursor-pointer" data-model-id="3">
+								Expand
+							</div>
 						</div>
 					</div>
 				</div>
@@ -366,8 +601,8 @@
 		<div class="section-container">
 			<section id="section-4" class="section" style="min-height: 100%;">
 				<div class="px-1 py-5 p-md-5 container container-fluid">
-					<div class="text-center my-5">
-						<div class="text-l font-fam-2 m-color-secondary-dark d-inline-block">
+					<div class="text-center mt-2 mb-5">
+						<div class="text-ml font-fam-2 m-color-secondary-dark d-inline-block">
 							EDUCATION
 							<div class="m-bg-secondary-dark mx-4" style="height: 5px;"></div>
 						</div>
@@ -486,20 +721,28 @@
 		<!-- SECTION - 5 -->
 		<div class="section-container m-bg-secondary">
 			<section id="section-5" class="section" style="min-height: 100%;">
-				<div class="padding-100 py-5 p-md-5 container-fluid">
-					<div class="text-center my-5">
-						<div class="text-l font-fam-2 m-color-secondary-dark d-inline-block">
+				<div class="p-5 container-fluid">
+					<div class="text-center mt-2 mb-5">
+						<div class="text-ml font-fam-2 m-color-secondary-dark d-inline-block">
 							BLOGS
 							<div class="m-bg-secondary-dark mx-4" style="height: 5px;"></div>
 						</div>
 					</div>
-					<div class="d-flex flex-wrap flex-column flex-md-row py-5 mt-5 justify-content-center text-center text-s">
-						<div class="position-relative mx-2 mx-sm-5 mx-md-0 mb-2 mb-md-0 portfolio-card">
-							<a href="https://www.sciencedirect.com/science/article/pii/S1877050920307560" class="text-decoration-none">
-								<img src="./resources/blog_1.jpg"  alt="Robust Sports Image Classification Using InceptionV3 and Neural Networks" class="w-100 h-auto">
-								<div class="text-dark"><b>Robust Sports Image Classification Using InceptionV3 and Neural Networks</b></div>
-							</a>
+					<div class="d-flex flex-wrap flex-column flex-md-row py-2 justify-content-center text-center text-s">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3">
+							<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+								<div class="w-100 h-50 py-2 text-white">
+									Robust Sports Image Classification Using InceptionV3 and Neural Networks
+								</div>
+								<div class="w-100 h-50" style=" background-image: url(./resources/blog_1.jpg); background-size: cover;"></div>
+							</div>
+							<div class="portfolio-hover d-inline-block align-middle font-fam-2 m-color-accent position-absolute w-100 cursor-pointer" data-model-id="-1">
+								<a href="https://www.sciencedirect.com/science/article/pii/S1877050920307560" target="_blank" class="text-decoration-none d-block m-color-accent">
+									Go To Blog <i class="fa fa-external-link"></i>
+								</a>
+							</div>
 						</div>
+
 					</div>
 				</div>
 			</section>
@@ -508,8 +751,8 @@
 		<div class="section-container m-bg-primary-dark-d1 position-relative">
 			<section id="section-6" class="section" style="min-height: 100%;">
 				<div class="p-5 container-fluid">
-					<div class="text-center my-5">
-						<div class="text-l font-fam-2 text-white d-inline-block">
+					<div class="text-center mt-2 mb-5">
+						<div class="text-ml font-fam-2 text-white d-inline-block">
 							CONTACT ME
 							<div class="m-bg-white mx-4" style="height: 5px;"></div>
 						</div>
