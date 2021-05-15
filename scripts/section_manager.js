@@ -5,7 +5,7 @@
 		this.sections = $(sectionClass);
 		this.sectionIndex = 0;
 		this.sectionIdData = 'section-id';
-		
+
 		//fill array with 'top' position of each section
 		this.sectionTopArr = [];
 		$.each(this.sections, (i,e) => {
@@ -13,7 +13,6 @@
 		});
 		this.sectionTopArr[0] += 60;
 		this.sectionTopArr[1] += 60;
-		console.log(this.sectionTopArr);
 
 		//scroll event listener
 		var timer;
@@ -26,6 +25,8 @@
 				this.scrollY = e.currentTarget.scrollY;
 				this.scrollY = (this.scrollY < 0) ? 0 : this.scrollY;
 				this.updateSectionIndex();
+				if(this.callback != undefined)
+					this.callback(scrollY);
 			}, 10);
 		});
 	};
@@ -56,7 +57,6 @@
 	};
 
 	SectionManager.prototype.onSectionIndexChange = function() {
-		console.log(this.scrollY);
 		//Event callback listener for Section Index changed
 		//update navbar position
 		if(this.navbar != undefined || this.navbar != null) {
@@ -86,7 +86,6 @@
 		if(this.sectionIndex >= this.sections.length) this.sectionIndex = 0;
 		this.scrollTo('#' + $(this.sections[this.sectionIndex]).attr('id'), true, 1000);
 		this.scrollY = $(this.sections[this.sectionIndex]).offset().top;
-		//this.onSectionIndexChange();
 	};
 
 	SectionManager.prototype.goToSection = function(sectionIndex) {
@@ -117,4 +116,8 @@
 		else {
 			$('html, body').scrollTop($(elementSelector).offset().top);
 		}
+	};
+
+	SectionManager.prototype.setOnControlledScrollCallBack = function(callback) {
+		this.callback = callback;
 	};

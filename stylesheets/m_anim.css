@@ -1,0 +1,66 @@
+.m-anim { position: relative; }
+
+/*entrance*/
+.m-anim-left-entrance { animation: left_entrance 1s; }
+.m-anim-right-entrance { animation: right_entrance 1s; }
+@keyframes left_entrance {
+	0% { left: -50%; }
+	100% { left: 0%; }
+}
+
+@keyframes right_entrance {
+	0% { right: -50%; }
+	100% { right: 0%; }
+}
+
+/*rotate Y*/
+.m-anim-spin { animation: spin 1.5s; }
+@keyframes spin {
+	0% { transform: rotateY(180deg); }
+	100% { transform: rotateY(0deg); }
+}
+
+/*fade*/
+.m-anim-fade-in { animation: fade_in 1s; }
+.m-anim-fade-out { animation: fade_out 1s; }
+@keyframes fade_in {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes fade_out {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+/*zoom*/
+.m-anim-zoom-in { animation: zoom_in 1s; }
+.m-anim-zoom-out { animation: zoom_out 1s; }
+@keyframes zoom_in {
+	0% { transform: scale(0,0); }
+	100% { transform: scale(1,1); }
+}
+@keyframes zoom_out {
+	0% { transform: scale(1,1); }
+	100% { transform: scale(0,0); }
+}
+
+/*bounce*/
+.m-anim-bounce { animation: bounce 1s; }
+@keyframes bounce {
+	0% { transform: scale(0,0); }
+	20% { transform: scale(1,1); }
+	40% { transform: scale(0.3, 0.3); }
+	60% { transform: scale(1,1); }
+	80% { transform: scale(0.6,0.6); }
+	100% { transform: scale(1,1); }
+}
+
+/*custom animations*/
+/*card text visiblity*/
+.m-anim-card-text { animation: card_text 1.5s; }
+@keyframes card_text {
+	0% { opacity: 0; }
+	25% { opacity: 0; }
+	75% { opacity: 1; }
+	100% { opacity: 1; }
+}

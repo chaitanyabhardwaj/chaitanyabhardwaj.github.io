@@ -4,12 +4,12 @@
 :root {
 	--primary-color : #00C7C7;
 	--primary-color-d1 : #00B3B3;
-	--primary-dark-color : #152638;
+	--primary-dark-color : #0d1824;/* #152638;*/
 	--primary-dark-color-d1 : #13202E;
 	--primary-light-color : #cce0e0;
 	--accent-color : #C90000;
 	--secondary-color : #E9ECEF;
-	--secondary-dark-color : #424242;
+	--secondary-dark-color : #525252;
 	--muted-color : #CCC;
 	--success-color : #1DBF42;
 	--success-dark-color : #28A745;
@@ -102,6 +102,12 @@ a { text-decoration: none !important; }
 .m-model {top: 5%; left: 0; right: 0; }
 .m-model-hide { filter: blur(30px); -webkit-filter: blur(30px); }
 
+/*opacity*/
+.opacity-0 { opacity: 0 !important; }
+.opacity-05 { opacity: 0.5 !important; }
+.opacity-1 { opacity: 1 !important; }
+
+#view-work { border: 2px solid; }
 #rotating-arrow { transition: all 0.3s; }
 #dp { height: 275px; width: 250px; }
 #contact-submit-btn:hover { background-color: var(--primary-color); border: 1px solid var(--primary-color); }

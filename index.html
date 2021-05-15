@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="./stylesheets/index.css">
+<link rel="stylesheet" type="text/css" href="./stylesheets/m_anim.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -18,7 +19,7 @@
 
 	'use strict';
 
-	function MyApp(sectionManager) {
+	function MyApp(sectionManager, animationManager) {
 		const inst = this;
 		//dom shortcuts
 		this.contactDiscord = $('.contact-discord');
@@ -30,6 +31,8 @@
 		this.modelActive = false;
 		this.portfolioHover = $('.portfolio-hover');
 		this.modelCloseBtn = $('.m-model-close-btn');
+
+		this.animationManager = animationManager;
 
 		//event listeners
 		this.viewWorkBtn.click(() => {
@@ -57,6 +60,32 @@
 			if(inst.modelActive)
 				inst.hideModel();
 		});
+	};
+
+	function MAnim() {
+		this.anim = $('.m-anim');
+		this.oldWaypoint = 0;
+		//calculate all waypoints
+		this.waypoints = [];
+		this.waypointsI = 0;
+		$.each(this.anim, (i,e) => {
+			this.waypoints[i] = Math.floor($(this.anim[i]).offset().top) + 100;
+		});
+	};
+
+	MAnim.prototype.triggerAnimationWayPoints = function(newWaypoint) {
+		var e;
+		while(this.waypointsI < this.waypoints.length) {
+			if(this.waypoints[this.waypointsI] > newWaypoint)
+				break;
+			e = $(this.anim[this.waypointsI]);
+			e.removeClass('opacity-0');
+			e.removeClass('invisible');
+			e.removeClass('m-rotate-z');
+			e.addClass(e.data('anim'));
+			this.waypointsI++;
+		}
+		this.oldWaypoint = newWaypoint;
 	};
 
 	MyApp.prototype.displayDialog = function(dialogText, dialogType) {
@@ -94,13 +123,22 @@
 		this.modelActive = false;
 	};
 
+	MyApp.prototype.onControlledScroll = function(scrollY) {
+		//convert 'scrollTop' to 'scrollBottom'
+		const scrollBottom = scrollY + $(window).height();
+		//trigger animation waypoints based on scroll bottom
+		if(this.animationManager.oldWaypoint < scrollBottom)
+			this.animationManager.triggerAnimationWayPoints(scrollBottom);
+	};
+
 	$(document).ready(() => {
-		//setup sm
 		const sm = new SectionManager('.section');
 		sm.setNavbar('.navbar-container', '.nav-item');
 		//intial call when setup ready
 		sm.init();
-		const app = new MyApp(sm);
+		const anm = new MAnim();
+		const app = new MyApp(sm, anm);
+		sm.setOnControlledScrollCallBack(app.onControlledScroll.bind(app));
 	});
 
 </script>
@@ -313,15 +351,15 @@
 		<!-- SECTION - 1 -->
 		<div class="section-container m-bg-primary-dark h-100">
 			<section id="section-1" class="text-white text-l section position-relative h-100">
-				<div class="position-absolute w-100 d-block text-center" style="top: 30%;">
+				<div class="position-absolute w-100 d-block text-center font-weight-bold" style="top: 30%;">
 					<div>
 						Hello, I'm <span class="m-color-accent"><b>Chaitanya Bhardwaj.</b></span>
 					</div>
 					<div>
-						I'm a full stack developer.
+						I'm a Software Developer.
 					</div>
 					<div class="m-3">
-						<button type="button" class="m-btn m-btn-white text-white text-m px-4 py-2" id="view-work">
+						<button type="button" class="m-btn m-btn-white text-white font-weight-bold text-m px-4 py-2" id="view-work">
 							View my work <i class="fa fa-long-arrow-right" id="rotating-arrow"></i>
 						</button>
 					</div>
@@ -366,13 +404,13 @@
 					</div>
 					<div class="p-5 container-fluid">
 						<div class="text-center mb-5">
-							<div class="text-ml font-fam-2 m-color-secondary-dark d-inline-block">
+							<div class="text-ml font-fam-2 m-color-secondary-dark d-inline-block m-anim invisible" data-anim="m-anim-left-entrance">
 								ABOUT
 								<div class="m-bg-secondary-dark mx-4" style="height: 5px;"></div>
 							</div>
 						</div>
 						<div class="my-5 mx-lg-5 mx-sm-3 row text-muted">
-							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0">
+							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0 m-anim opacity-0" data-anim="m-anim-fade-in">
 								<div class="m-badge m-bg-primary position-relative">
 									<div class="m-badge-content text-white position-absolute" style="top: 16px; left: 16px;">
 										<i class="fa fa-rocket" style="font-size: 135%;"></i>
@@ -380,7 +418,7 @@
 								</div>
 								<div class="text-s mt-2"><b>Optimised</b></div>
 							</div>
-							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0">
+							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0 m-anim opacity-0" data-anim="m-anim-fade-in">
 								<div class="m-badge m-bg-primary position-relative">
 									<div class="m-badge-content text-white position-absolute" style="top: 9px; left: 10px;">
 										<i class="fa fa-cubes" style="font-size: 125%;"></i>
@@ -388,7 +426,7 @@
 								</div>
 								<div class="text-s mt-2"><b>Modular</b></div>
 							</div>
-							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0">
+							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0 m-anim opacity-0" data-anim="m-anim-fade-in">
 								<div class="m-badge m-bg-primary position-relative">
 									<div class="m-badge-content text-white position-absolute" style="top: 11px; left: 16px;">
 										<i class="fa fa-hand-o-up" style="font-size: 125%;"></i>
@@ -396,7 +434,7 @@
 								</div>
 								<div class="text-s mt-2"><b>Intuitive</b></div>
 							</div>
-							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0">
+							<div class="m-badge-container text-center col-6 col-md-3 mb-4 mb-lg-0 m-anim opacity-0" data-anim="m-anim-fade-in">
 								<div class="m-badge m-bg-primary position-relative">
 									<div class="m-badge-content text-white position-absolute" style="top: 11px; left: 26px;">
 										<i class="fa fa-lightbulb-o" style="font-size: 150%;"></i>
@@ -406,17 +444,17 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-12 col-md-6 mb-5">
+							<div class="col-12 col-md-6 mb-5 m-anim invisible" data-anim="m-anim-left-entrance">
 								<div class="image-container shadow-lg p-2 m-auto" id="dp">
 									<img src="./resources/dp_s.jpg" alt="Profile Picture" style="width: 100%; height: auto;">
 								</div>
 								<!-- About Me -->
 								<div class="text-s text-center text-muted mt-4 px-2">
 									<div class="text-m font-fam-2">Who's this guy?</div>
-									I'm an university student pursing bachalor's in computer science. I have a strong passion for programming and developing fast and intuitive applications. I'm currently developing a major project in the field of Augmented Reality(AR)
+									I'm a university student pursing bachalor's in computer science. I have a strong passion for programming and developing fast and intuitive applications. I'm currently developing a major project in the field of Augmented Reality(AR)
 								</div>
 							</div>
-							<div class="col-12 col-md-6">
+							<div class="col-12 col-md-6 m-anim invisible" data-anim="m-anim-right-entrance">
 								<!-- HTML -->
 								<div class="row mt-xl-4">
 									<div class="col-3 text-xs m-bg-primary text-white text-center"><b>HTML</b></div>
@@ -530,15 +568,15 @@
 		<div class="section-container m-bg-primary-light">
 			<section id="section-3" class="section" style="min-height: 100%;">
 				<div class="p-5 container-fluid">
-					<div class="text-center mt-2 mb-5">
+					<div class="text-center mt-2 mb-5 m-anim invisible" data-anim="m-anim-right-entrance">
 						<div class="text-ml font-fam-2 m-color-secondary-dark d-inline-block">
 							PORTFOLIO
 							<div class="m-bg-secondary-dark mx-4" style="height: 5px;"></div>
 						</div>
 					</div>
 					<div class="d-flex flex-wrap flex-column flex-md-row justify-content-center text-center text-m">
-						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3">
-							<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim" data-anim="m-anim-spin">
+							<div class="w-100 h-100 portfolio-bg m-anim opacity-0" data-anim="m-anim-card-text" style="border: 1px solid white">
 								<div class="w-100 h-50 py-2 text-white">
 									Nlyze
 									<div class="text-s mx-4 my-2 py-2" style="border-top: 1px solid white;">
@@ -551,8 +589,8 @@
 								Expand
 							</div>
 						</div>
-						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3">
-							<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim" data-anim="m-anim-spin">
+							<div class="w-100 h-100 portfolio-bg m-anim opacity-0" data-anim="m-anim-card-text" style="border: 1px solid white">
 								<div class="w-100 h-50 py-2 text-white">
 									Dawn
 									<div class="text-s mx-4 my-2 py-2" style="border-top: 1px solid white;">
@@ -565,8 +603,8 @@
 								Expand
 							</div>
 						</div>
-						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3">
-							<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim" data-anim="m-anim-spin">
+							<div class="w-100 h-100 portfolio-bg m-anim opacity-0" data-anim="m-anim-card-text" style="border: 1px solid white">
 								<div class="w-100 h-50 py-2 text-white">
 									Teleport
 									<div class="text-s mx-4 my-2 py-2" style="border-top: 1px solid white;">
@@ -579,8 +617,8 @@
 								Expand
 							</div>
 						</div>
-						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3">
-							<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim" data-anim="m-anim-spin">
+							<div class="w-100 h-100 portfolio-bg m-anim opacity-0" data-anim="m-anim-card-text" style="border: 1px solid white">
 								<div class="w-100 h-50 py-2 text-white">
 									Auth Helper
 									<div class="text-s mx-4 my-2 py-2" style="border-top: 1px solid white;">
@@ -601,13 +639,13 @@
 		<div class="section-container">
 			<section id="section-4" class="section" style="min-height: 100%;">
 				<div class="px-1 py-5 p-md-5 container container-fluid">
-					<div class="text-center mt-2 mb-5">
+					<div class="text-center mt-2 mb-5 m-anim invisible" data-anim="m-anim-left-entrance">
 						<div class="text-ml font-fam-2 m-color-secondary-dark d-inline-block">
 							EDUCATION
 							<div class="m-bg-secondary-dark mx-4" style="height: 5px;"></div>
 						</div>
 					</div>
-					<div class="mx-0 mx-md-5 padding-100 text-s">
+					<div class="mx-0 mx-md-5 padding-100 text-s m-anim opacity-0" data-anim="m-anim-fade-in">
 						<!-- Graduation -->
 						<div class="card">
 							<div class="card-header px-5">
@@ -674,7 +712,7 @@
 					<!-- Certificates -->
 					<div class="mx-auto mt-5 mb-4 text-m m-bg-primary text-center font-fam-2 text-white" style="width: 200px;">Certificates</div>
 					<div class="d-flex justify-content-center flex-wrap mx-md-5">
-						<div class="mx-2 mb-2 mb-md-0">
+						<div class="mx-2 mb-2 mb-md-0 m-anim invisible" data-anim="m-anim-left-entrance">
 							<a href="https://www.youracclaim.com/badges/5eac4626-0221-4697-91d9-c1e84bc975c6/" target="_blank" class="image-container text-decoration-none">
 								<div class="certificate-badge m-bg-cisco">
 									<!--header-->
@@ -694,7 +732,7 @@
 								</div>
 							</a>
 						</div>
-						<div class="mx-2 mb-2 mb-md-0">
+						<div class="mx-2 mb-2 mb-md-0 m-anim invisible" data-anim="m-anim-right-entrance">
 							<a href="https://www.coursera.org/account/accomplishments/verify/K5D6UGQN5XHR" target="_blank" class="image-container text-decoration-none">
 								<div class="certificate-badge m-bg-google">
 									<!--header-->
@@ -722,22 +760,22 @@
 		<div class="section-container m-bg-secondary">
 			<section id="section-5" class="section" style="min-height: 100%;">
 				<div class="p-5 container-fluid">
-					<div class="text-center mt-2 mb-5">
+					<div class="text-center mt-2 mb-5 m-anim invisible" data-anim="m-anim-right-entrance">
 						<div class="text-ml font-fam-2 m-color-secondary-dark d-inline-block">
 							BLOGS
 							<div class="m-bg-secondary-dark mx-4" style="height: 5px;"></div>
 						</div>
 					</div>
 					<div class="d-flex flex-wrap flex-column flex-md-row py-2 justify-content-center text-center text-s">
-						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3">
-							<div class="w-100 h-100 portfolio-bg" style="border: 1px solid white">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim" data-anim="m-anim-spin">
+							<div class="w-100 h-100 portfolio-bg m-anim opacity-0" data-anim="m-anim-card-text" style="border: 1px solid white">
 								<div class="w-100 h-50 py-2 text-white">
 									Robust Sports Image Classification Using InceptionV3 and Neural Networks
 								</div>
 								<div class="w-100 h-50" style=" background-image: url(./resources/blog_1.jpg); background-size: cover;"></div>
 							</div>
 							<div class="portfolio-hover d-inline-block align-middle font-fam-2 m-color-accent position-absolute w-100 cursor-pointer" data-model-id="-1">
-								<a href="https://www.sciencedirect.com/science/article/pii/S1877050920307560" target="_blank" class="text-decoration-none d-block m-color-accent">
+								<a href="https://www.sciencedirect.com/science/article/pii/S1877050920307560" target="_blank" class="text-decoration-none d-block m-color-accent font-weight-bold">
 									Go To Blog <i class="fa fa-external-link"></i>
 								</a>
 							</div>
@@ -751,13 +789,13 @@
 		<div class="section-container m-bg-primary-dark-d1 position-relative">
 			<section id="section-6" class="section" style="min-height: 100%;">
 				<div class="p-5 container-fluid">
-					<div class="text-center mt-2 mb-5">
+					<div class="text-center mt-2 mb-5 m-anim invisible" data-anim="m-anim-left-entrance">
 						<div class="text-ml font-fam-2 text-white d-inline-block">
 							CONTACT ME
 							<div class="m-bg-white mx-4" style="height: 5px;"></div>
 						</div>
 					</div>
-					<div class="my-5 pt-5 text-white text-s">
+					<div class="my-5 pt-5 text-white text-s m-anim invisible" data-anim="m-anim-zoom-in">
 						<!--email-->
 						<div class="my-4 text-center">
 							<div class="d-inline-block py-2 m-bg-primary text-center contact-title-container">Email</div>
@@ -765,6 +803,7 @@
 								<a href="mailto:chaitanyabhardwaj89gmail.com" class="text-white contact-email">chaitanyabhardwaj89@gmail.com</a>
 							</div>
 						</div>
+						<!--discord-->
 						<div class="my-4 text-center">
 							<div class="d-inline-block py-2 m-bg-primary text-center contact-title-container">Discord</div>
 							<div class="d-inline-block py-2 m-bg-secondary-dark contact-info-container contact-discord cursor-pointer">Chaitanya#1796</div>
@@ -774,7 +813,7 @@
 				<!-- Other Networks -->
 				<div style="height: 50px;"></div>
 				<div class="m-bg-primary-dark container-fluid p-4 position-absolute w-100" style="bottom: 0px;">
-					<div class="position-absolute m-bg-accent text-white text-center nav-item" data-section-id="0" id="double-up">
+					<div class="position-absolute m-bg-accent text-white text-center nav-item m-anim invisible" data-anim="m-anim-bounce" data-section-id="0" id="double-up">
 						<i class="fa fa-angle-double-up text-l"></i>
 					</div>
 					<div class="text-center text-l">
