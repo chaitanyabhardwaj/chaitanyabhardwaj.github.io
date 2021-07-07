@@ -10,7 +10,7 @@
 	--accent-color : #C90000;
 	--secondary-color : #E9ECEF;
 	--secondary-dark-color : #525252;
-	--muted-color : #CCC;
+	--muted-color : #AAA;
 	--success-color : #1DBF42;
 	--success-dark-color : #28A745;
 	--error-color : #FA3447;
@@ -20,6 +20,8 @@
 	--google-light-color : #5999FF;
 	--cisco-color : #76BD52;
 	--cisco-light-color : #91DB6B;
+	--atlassian-color : #0052CC;
+	--atlassian-light-color : #1667E0;
 }
 
 * { box-sizing: border-box; padding: 0px; margin: 0px; font-family: 'Poiret One', cursive; }
@@ -58,6 +60,8 @@ a { text-decoration: none !important; }
 .m-color-google-light { color: var(--google-light-color) !important; }
 .m-color-cisco { color: var(--cisco-color) !important; }
 .m-color-cisco-light { color: var(--cisco-light-color) !important; }
+.m-color-atlassian { color: var(--atlassian-color) !important; }
+.m-color-atlassian-light { color: var(--atlassian-light-color) !important; }
 
 /*background colors*/
 .m-bg-primary { background-color: var(--primary-color) !important; }
@@ -78,6 +82,8 @@ a { text-decoration: none !important; }
 .m-bg-google-light { background-color: var(--google-light-color) !important; }
 .m-bg-cisco { background-color: var(--cisco-color) !important; }
 .m-bg-cisco-light { background-color: var(--cisco-light-color) !important; }
+.m-bg-atlassian { background-color: var(--atlassian-color) !important; }
+.m-bg-atlassian-light { background-color: var(--atlassian-light-color) !important; }
 
 /*buttons*/
 .m-btn { padding: 7px; background-color: transparent; transition: all 0.3s; cursor: pointer; }
@@ -91,7 +97,7 @@ a { text-decoration: none !important; }
 /*navbar*/
 .navbar-container { z-index: 999 !important; top: -4px; left: 0px; }
 .navbar { padding: .7rem 3.5rem; }
-.nav-item { cursor: pointer; transition: color 0.3s; }
+.nav-item { cursor: pointer; transition: color 0.3s; color: var(--muted-color); }
 .nav-item:hover { color: var(--white); }
 
 /*progress bar*/
@@ -116,7 +122,7 @@ a { text-decoration: none !important; }
 .cursor-pointer { cursor: pointer !important; }
 .m-badge { transform: rotate(45deg); display: inline-block; width: 80px; height: 80px; }
 .m-badge-content { transform: rotate(-45deg) ; }
-.certificate-badge { width: 170px; height: 170px; border-radius: 10px; padding: 10px; }
+.certificate-badge { width: 170px; height: 170px; border-radius: 2px; padding: 10px; }
 .hover-white:hover { color: var(--white) !important; }
 .clearfix { clear: both !important; }
 .portfolio-card-model { height: 400px; width: 250px; }
@@ -140,7 +146,6 @@ a { text-decoration: none !important; }
 	.text-ml { font-size: 30px !important; }
 	.text-l { font-size: 35px !important; }
 	.text-xl { font-size: 45px !important; }
-	.navbar { color: var(--muted-color) !important; }
 	.progress, .progress-bar, .progress-bar-title{ height: 22px; }
 	.contact-info-container { width: 300px; }
 	.padding-100 { padding: 50px !important; }
@@ -161,7 +166,6 @@ a { text-decoration: none !important; }
 	.text-ml { font-size: 25px !important; }
 	.text-l { font-size: 30px !important; }
 	.text-xl { font-size: 35px !important; }
-	.navbar { color: var(--muted-color) !important; }
 	.navbar-container { top: 0px; }
 	.progress, .progress-bar, .progress-bar-title{ height: 22px; }
 	.contact-info-container { width: 250px; }
@@ -184,7 +188,6 @@ a { text-decoration: none !important; }
 	.text-ml { font-size: 21px !important; }
 	.text-l { font-size: 25px !important; }
 	.text-xl { font-size: 30px !important; }
-	.navbar { color: var(--muted-color) !important; }
 	.navbar-container { top: 0px; }
 	.progress, .progress-bar, .progress-bar-title{ height: 22px; }
 	.padding-100 { padding: 10px !important; }
