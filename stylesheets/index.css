@@ -22,6 +22,8 @@
 	--cisco-light-color : #91DB6B;
 	--atlassian-color : #0052CC;
 	--atlassian-light-color : #1667E0;
+	--udemy-color : #EA5356;
+	--udemy-light-color : #FF5E62;
 }
 
 * { box-sizing: border-box; padding: 0px; margin: 0px; font-family: 'Poiret One', cursive; }
@@ -62,6 +64,8 @@ a { text-decoration: none !important; }
 .m-color-cisco-light { color: var(--cisco-light-color) !important; }
 .m-color-atlassian { color: var(--atlassian-color) !important; }
 .m-color-atlassian-light { color: var(--atlassian-light-color) !important; }
+.m-color-udemy { color: var(--udemy-color) !important; }
+.m-color-udemy-light { color: var(--udemy-light-color) !important; }
 
 /*background colors*/
 .m-bg-primary { background-color: var(--primary-color) !important; }
@@ -84,6 +88,8 @@ a { text-decoration: none !important; }
 .m-bg-cisco-light { background-color: var(--cisco-light-color) !important; }
 .m-bg-atlassian { background-color: var(--atlassian-color) !important; }
 .m-bg-atlassian-light { background-color: var(--atlassian-light-color) !important; }
+.m-bg-udemy { background-color: var(--udemy-color) !important; }
+.m-bg-udemy-light { background-color: var(--udemy-light-color) !important; }
 
 /*buttons*/
 .m-btn { padding: 7px; background-color: transparent; transition: all 0.3s; cursor: pointer; }
