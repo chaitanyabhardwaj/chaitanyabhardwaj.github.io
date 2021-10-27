@@ -93,12 +93,12 @@ a { text-decoration: none !important; }
 
 /*buttons*/
 .m-btn { padding: 7px; background-color: transparent; transition: all 0.3s; cursor: pointer; }
-.m-btn-primary { border: 1px solid var(--primary-color); }
-.m-btn-accent { border: 1px solid var(--accent-color); }
-.m-btn-secondary { border: 1px solid var(--secondary-color); }
-.m-btn-secondary-dark { border: 1px solid var(--secondary-dark-color); }
-.m-btn-white { border: 1px solid var(--white); }
-.m-btn:hover { background-color: var(--primary-color); border-color: var(--primary-color); }
+.m-btn-primary { border: 1px solid var(--primary-color) !important; }
+.m-btn-accent { border: 1px solid var(--accent-color) !important; }
+.m-btn-secondary { border: 1px solid var(--secondary-color) !important; }
+.m-btn-secondary-dark { border: 1px solid var(--secondary-dark-color) !important; }
+.m-btn-white { border: 1px solid var(--white) !important; }
+.m-btn:hover { background-color: var(--primary-color); border-color: transparent !important; }
 
 /*navbar*/
 .navbar-container { z-index: 999 !important; top: -4px; left: 0px; }

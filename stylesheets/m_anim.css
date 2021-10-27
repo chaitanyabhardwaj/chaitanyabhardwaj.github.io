@@ -64,3 +64,25 @@
 	75% { opacity: 1; }
 	100% { opacity: 1; }
 }
+
+
+/* code for anime.js */
+.wave-anime-container {
+	z-index: -999;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-dark-color);
+  text-align: center;
+  color: white;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+.wave-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
