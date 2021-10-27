@@ -1,0 +1,3 @@
+[submodule "lib/anime"]
+	path = lib/anime
+	url = https://github.com/juliangarnier/anime/
