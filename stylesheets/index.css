@@ -98,7 +98,7 @@ a { text-decoration: none !important; }
 .m-btn-secondary { border: 1px solid var(--secondary-color) !important; }
 .m-btn-secondary-dark { border: 1px solid var(--secondary-dark-color) !important; }
 .m-btn-white { border: 1px solid var(--white) !important; }
-.m-btn:hover { background-color: var(--primary-color); border-color: transparent !important; }
+.m-btn:hover { background-color: var(--primary-color) !important; border-color: transparent !important; }
 
 /*navbar*/
 .navbar-container { z-index: 999 !important; top: -4px; left: 0px; }
