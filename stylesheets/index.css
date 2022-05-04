@@ -91,6 +91,11 @@ a { text-decoration: none !important; }
 .m-bg-udemy { background-color: var(--udemy-color) !important; }
 .m-bg-udemy-light { background-color: var(--udemy-light-color) !important; }
 
+/*background gradients*/
+.m-bg-primary-light-gl { background-image: linear-gradient(150deg, var(--primary-light-color) 10%, #FFFFFF 80%) !important; }
+.m-bg-primary-light-gr { background-image: linear-gradient(210deg, var(--primary-light-color) 10%, #FFFFFF 80%) !important; }
+.m-bg-primary-light-glr { background-image: linear-gradient(to bottom, var(--primary-light-color), #FFFFFF, var(--primary-light-color)) !important; }
+
 /*buttons*/
 .m-btn { padding: 7px; background-color: transparent; transition: all 0.3s; cursor: pointer; }
 .m-btn-primary { border: 1px solid var(--primary-color) !important; }
