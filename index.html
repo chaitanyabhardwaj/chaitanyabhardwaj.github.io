@@ -37,6 +37,10 @@
 		this.portfolioHover = $('.portfolio-hover');
 		this.modelCloseBtn = $('.m-model-close-btn');
 
+		this.certificate = $('.certificate-container');
+		this.certificateToggleBtn = $('.certificate-toggle-btn');
+		this.certificatesVisible = true;
+
 		this.animationManager = animationManager;
 
 		//event listeners
@@ -64,6 +68,10 @@
 		this.modelCloseBtn.click(function() {
 			if(inst.modelActive)
 				inst.hideModel();
+		});
+
+		this.certificateToggleBtn.click(()=> {
+			inst.toggleCertificates();
 		});
 	};
 
@@ -152,6 +160,23 @@
 			    easing: 'easeInOutSine',
 			    autoplay: true
 			  });
+		}
+	};
+
+	MyApp.prototype.toggleCertificates = function() {
+		if(this.certificatesVisible) {
+			this.certificate.removeClass(this.certificate.data('anim'));
+			this.certificate.addClass('m-anim-zoom-out');
+			this.certificatesVisible = false;
+			setTimeout(() => {
+				this.certificate.hide();
+			}, 700);
+		}
+		else {
+			this.certificate.show()
+			this.certificate.removeClass('m-anim-zoom-out');
+			this.certificate.addClass(this.certificate.data('anim'));
+			this.certificatesVisible = true;
 		}
 	};
 
@@ -803,9 +828,9 @@
 						</div>
 					</div>
 					<!-- Certificates -->
-					<div class="mx-auto mt-5 mb-4 text-m m-bg-primary text-center font-fam-2 text-white" style="width: 200px;">Certificates</div>
+					<div class="mx-auto mt-5 mb-4 text-m m-bg-primary text-center font-fam-2 text-white certificate-toggle-btn cursor-pointer" style="width: 200px;">Certificates</div>
 					<div class="d-flex justify-content-center flex-wrap mx-md-5">
-						<div class="mx-2 mb-2 mb-md-0 m-anim invisible" data-anim="m-anim-zoom-in">
+						<div class="certificate-container mx-2 mb-2 mb-md-0 m-anim invisible" data-anim="m-anim-zoom-in">
 							<a href="https://www.youracclaim.com/badges/5eac4626-0221-4697-91d9-c1e84bc975c6/" target="_blank" class="image-container text-decoration-none">
 								<div class="certificate-badge m-bg-cisco">
 									<!--header-->
@@ -825,7 +850,7 @@
 								</div>
 							</a>
 						</div>
-						<div class="mx-2 mb-2 mb-md-0 m-anim invisible" data-anim="m-anim-zoom-in">
+						<div class="certificate-container mx-2 mb-2 mb-md-0 m-anim invisible" data-anim="m-anim-zoom-in">
 							<a href="https://www.coursera.org/account/accomplishments/verify/K5D6UGQN5XHR" target="_blank" class="image-container text-decoration-none">
 								<div class="certificate-badge m-bg-google">
 									<!--header-->
@@ -845,7 +870,7 @@
 								</div>
 							</a>
 						</div>
-						<div class="mx-2 mb-2 mb-md-0 m-anim invisible" data-anim="m-anim-zoom-in">
+						<div class="certificate-container mx-2 mb-2 mb-md-0 m-anim invisible" data-anim="m-anim-zoom-in">
 							<a href="https://www.udemy.com/certificate/UC-3dfe9465-bfed-4f92-8955-9408760164bd/" target="_blank" class="image-container text-decoration-none">
 								<div class="certificate-badge m-bg-udemy">
 									<!--header-->
@@ -865,7 +890,7 @@
 								</div>
 							</a>
 						</div>
-						<div class="mx-2 mb-2 mb-md-0 m-anim invisible" data-anim="m-anim-zoom-in">
+						<div class="certificate-container mx-2 mb-2 mb-md-0 m-anim invisible" data-anim="m-anim-zoom-in">
 							<a href="https://www.udemy.com/certificate/UC-71227db1-f194-43b3-b169-3c1fdeab894e/" target="_blank" class="image-container text-decoration-none">
 								<div class="certificate-badge m-bg-udemy">
 									<!--header-->
@@ -885,7 +910,7 @@
 								</div>
 							</a>
 						</div>
-						<div class="mx-2 mb-2 mb-md-0 m-anim invisible" data-anim="m-anim-zoom-in">
+						<div class="certificate-container mx-2 mb-2 mb-md-0 m-anim invisible" data-anim="m-anim-zoom-in">
 							<a href="https://www.coursera.org/account/accomplishments/verify/JGS7E9YF6ZTE" target="_blank" class="image-container text-decoration-none">
 								<div class="certificate-badge m-bg-atlassian">
 									<!--header-->
@@ -1069,10 +1094,3 @@
 		</div>
 	</div>
 </body></html>
-
-
-
-
-
-
-

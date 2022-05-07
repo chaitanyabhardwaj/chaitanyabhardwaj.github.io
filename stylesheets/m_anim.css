@@ -34,7 +34,7 @@
 
 /*zoom*/
 .m-anim-zoom-in { animation: zoom_in 0.7s; }
-.m-anim-zoom-out { animation: zoom_out 0.7s; }
+.m-anim-zoom-out { animation: zoom_out 0.7s; animation-fill-mode: forwards; -webkit-animation-fill-mode: forwards; }
 @keyframes zoom_in {
 	0% { transform: scale(0,0); }
 	100% { transform: scale(1,1); }
