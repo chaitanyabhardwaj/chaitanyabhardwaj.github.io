@@ -33,9 +33,9 @@ a { text-decoration: none !important; }
 .outer-container { width: 100%; height: 100%; }
 
 /*font family*/
-.font-fam-1 { font-family: 'Poiret One', cursive; }
-.font-fam-2 { font-family: 'Roboto', sans-serif; }
-.font-fam-3 { font-family: 'Press Start 2P', cursive; }
+.font-fam-1 { font-family: 'Poiret One', cursive !important; }
+.font-fam-2 { font-family: 'Roboto', sans-serif !important; }
+.font-fam-3 { font-family: 'Press Start 2P', cursive !important; }
 
 /*font size*/
 .text-xs { font-size: 17px !important; }

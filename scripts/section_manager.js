@@ -84,7 +84,7 @@
 	SectionManager.prototype.nextSection = function() {
 		this.sectionIndex++;
 		if(this.sectionIndex >= this.sections.length) this.sectionIndex = 0;
-		this.scrollTo('#' + $(this.sections[this.sectionIndex]).attr('id'), true, 1000);
+		this.scrollTo('#' + $(this.sections[this.sectionIndex]).attr('id'), true, 600);
 		this.scrollY = $(this.sections[this.sectionIndex]).offset().top;
 	};
 
