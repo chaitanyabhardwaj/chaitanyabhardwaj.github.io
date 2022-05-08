@@ -24,6 +24,8 @@
 	--atlassian-light-color : #1667E0;
 	--udemy-color : #EA5356;
 	--udemy-light-color : #FF5E62;
+
+	--black : #000000;
 }
 
 * { box-sizing: border-box; padding: 0px; margin: 0px; font-family: 'Poiret One', cursive; }
@@ -77,6 +79,7 @@ a { text-decoration: none !important; }
 .m-bg-accent { background-color: var(--accent-color) !important; }
 .m-bg-secondary-dark { background-color: var(--secondary-dark-color) !important; }
 .m-bg-white { background-color: var(--white) !important; }
+.m-bg-black { background-color: var(--black) !important;}
 .m-bg-muted { background-color: var(--muted-color) !important; }
 .m-bg-success { background-color: var(--success-color) !important; }
 .m-bg-success-dark { background-color: var(--success-dark-color) !important; }
@@ -95,6 +98,7 @@ a { text-decoration: none !important; }
 .m-bg-primary-light-gl { background-image: linear-gradient(150deg, var(--primary-light-color) 10%, #FFFFFF 80%) !important; }
 .m-bg-primary-light-gr { background-image: linear-gradient(210deg, var(--primary-light-color) 10%, #FFFFFF 80%) !important; }
 .m-bg-primary-light-glr { background-image: linear-gradient(to bottom, var(--primary-light-color), #FFFFFF, var(--primary-light-color)) !important; }
+.m-bg-primary-dark-glr { background-image: linear-gradient(to bottom, #000, #222, #000) !important; }
 
 /*buttons*/
 .m-btn { padding: 7px; background-color: transparent; transition: all 0.3s; cursor: pointer; }
@@ -133,12 +137,12 @@ a { text-decoration: none !important; }
 .cursor-pointer { cursor: pointer !important; }
 .m-badge { transform: rotate(45deg); display: inline-block; width: 80px; height: 80px; }
 .m-badge-content { transform: rotate(-45deg) ; }
-.certificate-badge { width: 170px; height: 170px; border-radius: 2px; padding: 10px; -webkit-box-shadow: 1px 3px 7px 1px #777; -moz-box-shadow: 1px 3px 7px 1px #777; -o-box-shadow: 1px 3px 7px 1px #777; box-shadow: 1px 3px 7px 1px #777; }
+.certificate-badge { width: 170px; height: 170px; border-radius: 2px; padding: 10px; -webkit-box-shadow: 1px 3px 7px 1px var(--black); -moz-box-shadow: 1px 3px 7px 1px var(--black); -o-box-shadow: 1px 3px 7px 1px var(--black); box-shadow: 1px 3px 7px 1px var(--black); }
 .hover-white:hover { color: var(--white) !important; }
 .clearfix { clear: both !important; }
 .portfolio-card-model { height: 400px; width: 250px; }
-.portfolio-card { height: 400px; flex: 0 0 250px; }
-.portfolio-card, .portfolio-card-model { box-shadow: 0px 0px 10px 1px var(--gray); border-radius: 13px; }
+.portfolio-card { height: 400px; flex: 0 0 250px; box-shadow: 0px 0px 10px 1px var(--black); }
+.portfolio-card-model { box-shadow: 0px 0px 10px 1px var(--gray); border-radius: 13px; }
 .portfolio-hover { opacity: 0; background-color: var(--white); top: 40%; left: 0%; }
 .portfolio-bg, .portfolio-hover { transition: all 0.3s; }
 .portfolio-card:hover .portfolio-bg { filter: blur(2px); -webkit-filter: blur(2px); }
