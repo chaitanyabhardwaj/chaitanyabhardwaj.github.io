@@ -131,13 +131,16 @@ a { text-decoration: none !important; }
 #view-work { border: 2px solid; }
 #rotating-arrow { transition: all 0.3s; }
 #dp { height: 275px; width: 250px; -webkit-box-shadow: 1px 3px 6px 3px var(--muted-color); -moz-box-shadow: 1px 3px 6px 3px var(--muted-color); -o-box-shadow: 1px 3px 6px 3px var(--muted-color); box-shadow: 1px 3px 6px 3px var(--muted-color); }
+#dp:hover { transform: rotate(3deg); }
 #contact-submit-btn:hover { background-color: var(--primary-color); border: 1px solid var(--primary-color); }
 .m-btn:hover #rotating-arrow { transform: rotate(90deg); }
 .section-container { min-height: 100%; }
 .cursor-pointer { cursor: pointer !important; }
 .m-badge { transform: rotate(45deg); display: inline-block; width: 80px; height: 80px; }
 .m-badge-content { transform: rotate(-45deg) ; }
-.hover-shadow { transition: all 0.4s;}
+.text-shadow-primary:hover { -webkit-text-shadow: 0px 0px 7px var(--primary-color-d1); -moz-text-shadow: 0px 0px 7px var(--primary-color-d1); -o-text-shadow: 0px 0px 7px var(--primary-color-d1); text-shadow: 0px 0px 7px var(--primary-color-d1); }
+.scale:hover { transform: scale(1.1,1.1) !important; }
+.hover-shadow { transition: all 0.2s;}
 .hover-shadow:hover { -webkit-box-shadow: 1px 3px 6px 3px var(--muted-color); -moz-box-shadow: 1px 3px 6px 3px var(--muted-color); -o-box-shadow: 1px 3px 6px 3px var(--muted-color); box-shadow: 1px 3px 6px 3px var(--muted-color); }
 .education-container { transition: all 0.4s; -webkit-box-shadow: 1px 3px 6px 3px var(--muted-color); -moz-box-shadow: 1px 3px 6px 3px var(--muted-color); -o-box-shadow: 1px 3px 6px 3px var(--muted-color); box-shadow: 1px 3px 6px 3px var(--muted-color); }
 .education-container:hover { -webkit-box-shadow: 1px 3px 10px 4px var(--primary-color-d1); -moz-box-shadow: 1px 3px 10px 4px var(--primary-color-d1); -o-box-shadow: 1px 3px 10px 4px var(--primary-color-d1); box-shadow: 1px 3px 10px 4px var(--primary-color-d1); }
@@ -157,6 +160,7 @@ a { text-decoration: none !important; }
 .padding-100 { padding: 100px !important; }
 .dialog-box { top: 0; left: 0; }
 #double-up { width: 40px; height: 40px; top: -20px; left: 48%; }
+#double-up:hover { transform: scale(1.1,1.1) !important; }
 
 /*medium width devices*/
 @media screen and (max-width: 1200px) and (min-width: 601px) {
