@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:wght@800|Poiret+One|Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:wght@800|Raleway:wght@100;300;400;600;800|Press+Start+2P&display=swap');
 
 /*CSS var*/
 :root {
@@ -7,10 +7,12 @@
 	--primary-dark-color : #0d1824;/* #152638;*/
 	--primary-dark-color-d1 : #13202E;
 	--primary-light-color : #cce0e0;
+	--primary-light-color-d1 :#acdada;
 	--accent-color : #C90000;
 	--secondary-color : #E9ECEF;
 	--secondary-dark-color : #525252;
 	--muted-color : #AAA;
+	--muted-color-light : #e9ecef;
 	--success-color : #1DBF42;
 	--success-dark-color : #28A745;
 	--error-color : #FA3447;
@@ -28,24 +30,24 @@
 	--black : #000000;
 }
 
-* { box-sizing: border-box; padding: 0px; margin: 0px; font-family: 'Poiret One', cursive; }
+* { box-sizing: border-box; padding: 0px; margin: 0px; font-family: 'Raleway', sans-serif; }
 html, body { height: 100%; width: 100%; }
 a { text-decoration: none !important; }
 .outer-wrapper { position: fixed !important; width: 100%; height: 100%; z-index: 1000; }
 .outer-container { width: 100%; height: 100%; }
 
 /*font family*/
-.font-fam-1 { font-family: 'Poiret One', cursive !important; }
+.font-fam-1 { font-family: 'Raleway', sans-serif !important; }
 .font-fam-2 { font-family: 'Roboto', sans-serif !important; }
 .font-fam-3 { font-family: 'Press Start 2P', cursive !important; }
 
 /*font size*/
-.text-xs { font-size: 17px !important; }
-.text-s { font-size: 20px !important; }
-.text-m { font-size: 30px !important; }
-.text-ml { font-size: 35px !important; }
-.text-l { font-size: 40px !important; }
-.text-xl { font-size: 50px !important; }
+.text-xs { font-size: 14px !important; }
+.text-s { font-size: 16px !important; }
+.text-m { font-size: 24px !important; }
+.text-ml { font-size: 30px !important; }
+.text-l { font-size: 35px !important; }
+.text-xl { font-size: 45px !important; }
 
 /*colors*/
 .m-color-primary { color: var(--primary-color) !important; }
@@ -74,6 +76,7 @@ a { text-decoration: none !important; }
 .m-bg-primary-d1 { background-color: var(--primary-color-d1) !important; }
 .m-bg-primary-dark { background-color: var(--primary-dark-color) !important; }
 .m-bg-primary-light { background-color: var(--primary-light-color) !important; }
+.m-bg-primary-light-d1 { background-color: var(--primary-light-color-d1) !important; }
 .m-bg-primary-dark-d1 { background-color: var(--primary-dark-color-d1) !important; }
 .m-bg-secondary { background-color: var(--secondary-color) !important; }
 .m-bg-accent { background-color: var(--accent-color) !important; }
@@ -81,6 +84,7 @@ a { text-decoration: none !important; }
 .m-bg-white { background-color: var(--white) !important; }
 .m-bg-black { background-color: var(--black) !important;}
 .m-bg-muted { background-color: var(--muted-color) !important; }
+.m-bg-muted-light { background-color: var(--muted-color-light) !important; }
 .m-bg-success { background-color: var(--success-color) !important; }
 .m-bg-success-dark { background-color: var(--success-dark-color) !important; }
 .m-bg-error { background-color: var(--error-color) !important; }
@@ -148,8 +152,8 @@ a { text-decoration: none !important; }
 .certificate-badge { width: 170px; height: 170px; border-radius: 2px; padding: 10px; -webkit-box-shadow: 1px 3px 6px 3px var(--muted-color); -moz-box-shadow: 1px 3px 6px 3px var(--muted-color); -o-box-shadow: 1px 3px 6px 3px var(--muted-color); box-shadow: 1px 3px 6px 3px var(--muted-color); }
 .hover-white:hover { color: var(--white) !important; }
 .clearfix { clear: both !important; }
-.portfolio-card-model { height: 400px; width: 250px; }
-.portfolio-card { height: 400px; flex: 0 0 250px; box-shadow: 0px 0px 10px 1px var(--black); }
+.portfolio-card-model { height: 330px; width: 250px; }
+.portfolio-card { height: 330px; flex: 0 0 250px; box-shadow: 0px 0px 10px 1px var(--black); }
 .portfolio-card-model { box-shadow: 0px 0px 10px 1px var(--gray); border-radius: 13px; }
 .portfolio-hover { opacity: 0; background-color: var(--white); top: 40%; left: 0%; }
 .portfolio-bg, .portfolio-hover { transition: all 0.3s; }
@@ -158,6 +162,7 @@ a { text-decoration: none !important; }
 .contact-title-container { border-radius: 10px 0px 0px 10px; width: 100px; }
 .contact-info-container { width: 500px; border-radius: 0px 10px 10px 0px; }
 .padding-100 { padding: 100px !important; }
+.padding-100-x { padding-left: 100px !important; padding-right: 100px !important; }
 .dialog-box { top: 0; left: 0; }
 #double-up { width: 40px; height: 40px; top: -20px; left: 48%; }
 #double-up:hover { transform: scale(1.1,1.1) !important; }
@@ -173,6 +178,7 @@ a { text-decoration: none !important; }
 	.progress, .progress-bar, .progress-bar-title{ height: 22px; }
 	.contact-info-container { width: 300px; }
 	.padding-100 { padding: 50px !important; }
+	.padding-100-x { padding-left: 30px !important; padding-right: 30px !important; }
 	.portfolio-card-model { height: 250px; width: 200px; }
 
 	#dp { height: 220px; width: 200px; }
@@ -194,6 +200,7 @@ a { text-decoration: none !important; }
 	.progress, .progress-bar, .progress-bar-title{ height: 22px; }
 	.contact-info-container { width: 250px; }
 	.padding-100 { padding: 10px !important; }
+	.padding-100-x { padding-left: 10px !important; padding-right: 10px !important; }
 	.portfolio-card { height: 250px; flex: 0 0 200px; }
 	.portfolio-card-model { height: 250px; width: 200px; }
 
@@ -215,6 +222,7 @@ a { text-decoration: none !important; }
 	.navbar-container { top: 0px; }
 	.progress, .progress-bar, .progress-bar-title{ height: 22px; }
 	.padding-100 { padding: 10px !important; }
+	.padding-100-x { padding-left: 5px !important; padding-right: 5px !important; }
 	.portfolio-card { height: 250px; flex: 0 0 200px; }
 	
 	#dp { height: 188px; width: 170px; }
