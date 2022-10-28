@@ -159,8 +159,8 @@ a { text-decoration: none !important; }
 .portfolio-bg, .portfolio-hover { transition: all 0.3s; }
 .portfolio-card:hover .portfolio-bg { filter: blur(2px); -webkit-filter: blur(2px); }
 .portfolio-card:hover .portfolio-hover { opacity: 1; }
-.contact-title-container { border-radius: 10px 0px 0px 10px; width: 100px; }
-.contact-info-container { width: 500px; border-radius: 0px 10px 10px 0px; }
+.contact-title-container { border-radius: 1px 0px 0px 1px; width: 100px; }
+.contact-info-container { width: 500px; border-radius: 0px 1px 1px 0px; }
 .padding-100 { padding: 100px !important; }
 .padding-100-x { padding-left: 100px !important; padding-right: 100px !important; }
 .dialog-box { top: 0; left: 0; }
