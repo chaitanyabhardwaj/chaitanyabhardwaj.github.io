@@ -24,8 +24,10 @@
 	--cisco-light-color : #91DB6B;
 	--atlassian-color : #0052CC;
 	--atlassian-light-color : #1667E0;
-	--udemy-color : #EA5356;
-	--udemy-light-color : #FF5E62;
+	--udemy-color-1 : #EA5356;
+	--udemy-light-color-1 : #FF5E62;
+	--udemy-color-2 : #A240ED;
+	--udemy-light-color-2 : #AB44FA;
 
 	--black : #000000;
 }
@@ -68,8 +70,10 @@ a { text-decoration: none !important; }
 .m-color-cisco-light { color: var(--cisco-light-color) !important; }
 .m-color-atlassian { color: var(--atlassian-color) !important; }
 .m-color-atlassian-light { color: var(--atlassian-light-color) !important; }
-.m-color-udemy { color: var(--udemy-color) !important; }
-.m-color-udemy-light { color: var(--udemy-light-color) !important; }
+.m-color-udemy-1 { color: var(--udemy-color-1) !important; }
+.m-color-udemy-light-1 { color: var(--udemy-light-color-1) !important; }
+.m-color-udemy-2 { color: var(--udemy-color-2) !important; }
+.m-color-udemy-light-2 { color: var(--udemy-light-color-2) !important; }
 
 /*background colors*/
 .m-bg-primary { background-color: var(--primary-color) !important; }
@@ -95,8 +99,10 @@ a { text-decoration: none !important; }
 .m-bg-cisco-light { background-color: var(--cisco-light-color) !important; }
 .m-bg-atlassian { background-color: var(--atlassian-color) !important; }
 .m-bg-atlassian-light { background-color: var(--atlassian-light-color) !important; }
-.m-bg-udemy { background-color: var(--udemy-color) !important; }
-.m-bg-udemy-light { background-color: var(--udemy-light-color) !important; }
+.m-bg-udemy-1 { background-color: var(--udemy-color-1) !important; }
+.m-bg-udemy-light-1 { background-color: var(--udemy-light-color-1) !important; }
+.m-bg-udemy-2 { background-color: var(--udemy-color-2) !important; }
+.m-bg-udemy-light-2 { background-color: var(--udemy-light-color-2) !important; }
 
 /*background gradients*/
 .m-bg-primary-light-gl { background-image: linear-gradient(150deg, var(--primary-light-color) 10%, #FFFFFF 80%) !important; }
@@ -149,7 +155,7 @@ a { text-decoration: none !important; }
 .education-container { transition: all 0.4s; -webkit-box-shadow: 1px 3px 6px 3px var(--muted-color); -moz-box-shadow: 1px 3px 6px 3px var(--muted-color); -o-box-shadow: 1px 3px 6px 3px var(--muted-color); box-shadow: 1px 3px 6px 3px var(--muted-color); }
 .education-container:hover { -webkit-box-shadow: 1px 3px 10px 4px var(--primary-color-d1); -moz-box-shadow: 1px 3px 10px 4px var(--primary-color-d1); -o-box-shadow: 1px 3px 10px 4px var(--primary-color-d1); box-shadow: 1px 3px 10px 4px var(--primary-color-d1); }
 .certificate-container:hover { -webkit-box-shadow: 1px 3px 10px 4px var(--primary-color-d1); -moz-box-shadow: 1px 3px 10px 4px var(--primary-color-d1); -o-box-shadow: 1px 3px 10px 4px var(--primary-color-d1); box-shadow: 1px 3px 10px 4px var(--primary-color-d1); }
-.certificate-badge { width: 170px; height: 170px; border-radius: 2px; padding: 10px; -webkit-box-shadow: 1px 3px 6px 3px var(--muted-color); -moz-box-shadow: 1px 3px 6px 3px var(--muted-color); -o-box-shadow: 1px 3px 6px 3px var(--muted-color); box-shadow: 1px 3px 6px 3px var(--muted-color); }
+.certificate-badge { width: 180px; height: 180px; border-radius: 2px; padding: 10px; -webkit-box-shadow: 1px 3px 6px 3px var(--muted-color); -moz-box-shadow: 1px 3px 6px 3px var(--muted-color); -o-box-shadow: 1px 3px 6px 3px var(--muted-color); box-shadow: 1px 3px 6px 3px var(--muted-color); border: 1px solid #777; background-color: #fffcf8; }
 .hover-white:hover { color: var(--white) !important; }
 .clearfix { clear: both !important; }
 .portfolio-card-model { height: 330px; width: 250px; }
