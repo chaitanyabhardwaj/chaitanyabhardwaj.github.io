@@ -17,7 +17,7 @@
 		//scroll event listener
 		var timer;
 		$(window).scroll((e) => {
-			//timer to log event with a 30ms interval
+			//timer to log event every ms
 			//this updates 'this.sectionIndex' to match current section
 			clearTimeout(timer);
 			timer = setTimeout(() => {
@@ -27,7 +27,7 @@
 				this.updateSectionIndex();
 				if(this.callback != undefined)
 					this.callback(scrollY);
-			}, 10);
+			}, 1);
 		});
 	};
 
