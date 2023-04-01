@@ -188,6 +188,20 @@
 		}
 	};
 
+	MyApp.prototype.typeIt = function(container, str, speed, callback) {
+		let i = 0;
+		let str1 = '';
+		const interval = setInterval(() => {
+			str1 += str.charAt(i);
+			$(container).html(str1);
+			i++;
+			if(i == str.length) {
+				callback();
+				clearInterval(interval);
+			}
+		}, speed);
+	};
+
 	$(document).ready(() => {
 		const sm = new SectionManager('.section');
 		sm.setNavbar('.navbar-container', '.nav-item');
@@ -197,6 +211,17 @@
 		const app = new MyApp(sm, anm);
 		app.anime();
 		sm.setOnControlledScrollCallBack(app.onControlledScroll.bind(app));
+		let typeStr0 = "<div>" +
+						"Hello, I'm <span class='m-color-accent'><b>Chaitanya Bhardwaj.</b></span>" +
+					"</div>" +
+					"<div>" +
+						"I'm a Software Developer." +
+					"</div>";
+		$('.typeit-1').hide();
+		app.typeIt('.typeit-0', typeStr0, 70, () => {
+			$('.typeit-1').show(500);
+			$('.typeit-1').removeClass('invisible');
+		});
 	});
 
 </script>
@@ -512,13 +537,17 @@
 		<div class="section-container m-bg-primary-dark h-100">
 			<section id="section-1" class="text-white text-l section position-relative h-100">
 				<div class="position-absolute w-100 d-block text-center font-weight-bold" style="top: 30%; z-index: 999;">
-					<div>
-						Hello, I'm <span class="m-color-accent"><b>Chaitanya Bhardwaj.</b></span>
+					<div class="typeit-0">
+						<!--
+						<div>
+							Hello, I'm <span class="m-color-accent"><b>Chaitanya Bhardwaj.</b></span>
+						</div>
+						<div>
+							I'm a Software Developer.
+						</div>
+						-->
 					</div>
-					<div>
-						I'm a Software Developer.
-					</div>
-					<div class="m-3">
+					<div class="m-3 typeit-1 invisible">
 						<button type="button" class="m-btn m-btn-white m-bg-primary-dark text-white font-weight-bold text-m px-4 py-2" id="view-work">
 							View my work <i class="fa fa-long-arrow-right" id="rotating-arrow"></i>
 						</button>
