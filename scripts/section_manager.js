@@ -57,7 +57,6 @@ class SectionManager {
 			this.sectionIndex = temp;
 			//callback
 			this.onSectionIndexChange();
-			console.log(this.timeoutVal);
 		}
 	}
 	onSectionIndexChange() {
