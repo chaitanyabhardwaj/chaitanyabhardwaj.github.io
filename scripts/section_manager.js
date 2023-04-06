@@ -129,6 +129,7 @@ class SectionManager {
 	setOnControlledScrollCallBack(callback) {
 		this.callback = callback;
 	}
+	setTimeoutVal = (newVal) => this.timeoutVal = newVal;
 };
 
 

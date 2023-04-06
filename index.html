@@ -39,6 +39,7 @@
 		this.viewWorkBtn = $('#view-work');
 		this.wrapper = $('.outer-wrapper');
 		this.outerContainer = $('.outer-container');
+		this.doubleUp = $('#double-up');
 
 		this.modelAll = $('.m-model');
 		this.modelActive = false;
@@ -55,7 +56,9 @@
 		this.viewWorkBtn.click(() => {
 			sectionManager.goToSection(1);
 		});
-
+		this.doubleUp.click(() => {
+			sectionManager.setTimeoutVal(1);
+		});
 		this.contactDiscord.click(function(e) {
 			//copy discord text to system clipboard on click
 			let dText = $(e.currentTarget).text();
@@ -66,18 +69,15 @@
 				console.log(err);
 			});
 		});
-
 		this.portfolioHover.click(function(e) {
 			const modelID = $(e.currentTarget).data('model-id');
 			if(modelID < 0) return;
 			inst.displayModel(modelID);
 		});
-
 		this.modelCloseBtn.click(function() {
 			if(inst.modelActive)
 				inst.hideModel();
 		});
-
 		this.certificateToggleBtn.click(()=> {
 			inst.toggleCertificates();
 		});
