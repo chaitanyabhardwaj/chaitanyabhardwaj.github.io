@@ -34,6 +34,8 @@
 
 	function MyApp(sectionManager, animationManager) {
 		const inst = this;
+		this.sectionManager = sectionManager;
+		this.animationManager = animationManager;
 		//dom shortcuts
 		this.contactDiscord = $('.contact-discord');
 		this.viewWorkBtn = $('#view-work');
@@ -109,6 +111,12 @@
 		this.oldWaypoint = newWaypoint;
 	};
 
+	MAnim.prototype.increaseWayPoints = function(updateBy) {
+		if(isNaN(updateBy)) return;
+		this.waypoints = this.waypoints.map(e => e + updateBy);
+		console.log(this.waypoints)
+	}
+
 	MyApp.prototype.displayDialog = function(dialogText, dialogType) {
 		if(typeof dialogType != "string") return;
 		dialogType = dialogType.toUpperCase();
@@ -176,6 +184,7 @@
 			this.certificate.removeClass(this.certificate.data('anim'));
 			this.certificate.addClass('m-anim-zoom-out');
 			this.certificatesVisible = false;
+			this.animationManager.increaseWayPoints(-500);
 			setTimeout(() => {
 				this.certificate.hide();
 			}, 700);
@@ -185,6 +194,7 @@
 			this.certificate.removeClass('m-anim-zoom-out');
 			this.certificate.addClass(this.certificate.data('anim'));
 			this.certificatesVisible = true;
+			this.animationManager.increaseWayPoints(500);
 		}
 	};
 
