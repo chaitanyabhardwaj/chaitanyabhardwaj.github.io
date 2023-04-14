@@ -184,7 +184,7 @@
 			this.certificate.removeClass(this.certificate.data('anim'));
 			this.certificate.addClass('m-anim-zoom-out');
 			this.certificatesVisible = false;
-			this.animationManager.increaseWayPoints(-500);
+			this.animationManager.increaseWayPoints(-1000);
 			setTimeout(() => {
 				this.certificate.hide();
 			}, 700);
@@ -194,7 +194,7 @@
 			this.certificate.removeClass('m-anim-zoom-out');
 			this.certificate.addClass(this.certificate.data('anim'));
 			this.certificatesVisible = true;
-			this.animationManager.increaseWayPoints(500);
+			this.animationManager.increaseWayPoints(1000);
 		}
 	};
 
