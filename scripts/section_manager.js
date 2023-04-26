@@ -84,7 +84,7 @@ class SectionManager {
 		}
 		//update timeout val to increase efficiency and decrease load
 		if (this.sectionIndex > 1 && this.visitedLast) {
-			this.timeoutVal = 50;
+			this.timeoutVal = 10;
 		}
 		else {
 			this.timeoutVal = 1;
