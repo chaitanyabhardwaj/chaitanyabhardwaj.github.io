@@ -3,7 +3,6 @@
 
 class SectionManager {
 	constructor(sectionClass) {
-		this.timeoutVal = 1;
 		this.sections = $(sectionClass);
 		this.sectionIndex = 0;
 		this.sectionIdData = 'section-id';
@@ -18,19 +17,12 @@ class SectionManager {
 		this.sectionTopArr[1] += 60;
 
 		//scroll event listener
-		var timer;
 		$(window).scroll((e) => {
-			//timer to log event every ms
-			//this updates 'this.sectionIndex' to match current section
-			clearTimeout(timer);
-			timer = setTimeout(() => {
-				//update current section
-				this.scrollY = e.currentTarget.scrollY;
-				this.scrollY = (this.scrollY < 0) ? 0 : this.scrollY;
-				this.updateSectionIndex();
-				if (this.callback != undefined)
-					this.callback(scrollY);
-			}, this.timeoutVal);
+			this.scrollY = e.currentTarget.scrollY;
+			this.scrollY = (this.scrollY < 0) ? 0 : this.scrollY;
+			this.updateSectionIndex();
+			if (this.callback != undefined)
+				this.callback(scrollY);
 		});
 	}
 	init() {
@@ -82,13 +74,6 @@ class SectionManager {
 				}
 			});
 		}
-		//update timeout val to increase efficiency and decrease load
-		if (this.sectionIndex > 1 && this.visitedLast) {
-			this.timeoutVal = 10;
-		}
-		else {
-			this.timeoutVal = 1;
-		}
 	}
 	nextSection() {
 		this.sectionIndex++;
@@ -107,7 +92,7 @@ class SectionManager {
 		this.navbar = $(navbar);
 		this.navItems = $(navitems);
 		this.navbarPlaceholder = $('.navbar-placeholder');
-		this.navbarScrollY = this.navbar.offset().top;
+		this.navbarScrollY = Math.floor(this.navbar.offset().top);
 		this.navbarHeight = this.navbar.height();
 		//setup nav click events
 		this.navItems.click((e) => {
@@ -129,7 +114,7 @@ class SectionManager {
 	setOnControlledScrollCallBack(callback) {
 		this.callback = callback;
 	}
-	setTimeoutVal = (newVal) => this.timeoutVal = newVal;
+
 };
 
 

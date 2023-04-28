@@ -27,7 +27,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="./scripts/section_manager.js"></script>
-<script src="./lib/anime/lib/anime.min.js"></script>
 <script>
 
 	'use strict';
@@ -57,9 +56,6 @@
 		//event listeners
 		this.viewWorkBtn.click(() => {
 			sectionManager.goToSection(1);
-		});
-		this.doubleUp.click(() => {
-			sectionManager.setTimeoutVal(1);
 		});
 		this.contactDiscord.click(function(e) {
 			//copy discord text to system clipboard on click
@@ -114,7 +110,6 @@
 	MAnim.prototype.increaseWayPoints = function(updateBy) {
 		if(isNaN(updateBy)) return;
 		this.waypoints = this.waypoints.map(e => e + updateBy);
-		console.log(this.waypoints)
 	}
 
 	MyApp.prototype.displayDialog = function(dialogText, dialogType) {
@@ -580,19 +575,19 @@
 									<li class="nav-item pr-4 py-1" data-section-id="0">
 										<img src="./resources/favicon.png" width="25" class="h-auto">
 									</li>
-									<li class="nav-item text-s pr-4 py-1" data-section-id="1">
+									<li class="nav-item text-xs pr-4 py-1" data-section-id="1">
 										About
 									</li>
-									<li class="nav-item text-s pr-4 py-1" data-section-id="2">
+									<li class="nav-item text-xs pr-4 py-1" data-section-id="2">
 										Portfolio
 									</li>
-									<li class="nav-item text-s pr-4 py-1" data-section-id="3">
+									<li class="nav-item text-xs pr-4 py-1" data-section-id="3">
 										Academics
 									</li>
-									<li class="nav-item text-s pr-4 py-1" data-section-id="4">
+									<li class="nav-item text-xs pr-4 py-1" data-section-id="4">
 										Publications
 									</li>
-									<li class="nav-item text-s pr-4 py-1" data-section-id="5">
+									<li class="nav-item text-xs pr-4 py-1" data-section-id="5">
 										Contact
 									</li>
 									<li class="nav-item pr-4 py-1" data-section-id="-1">
@@ -654,7 +649,10 @@
 								<!-- About Me -->
 								<div class="text-s text-center text-muted mt-4 px-2 px-md-5">
 									<div class="text-m font-fam-2">Who's this guy?</div>
-									Hello! I'm a full stack software developer at Cognizant. As someone who is highly focused and attentive to detail, I thrive on building quality systems that surpass end user's expectations. I have a strong passion for creating fast and intuitive applications. As my current role, I have built quality software using various technologies and have automated existing products to reduce manual effort by 85%. I'm currently creating a scene virtualisation project involving modern technologies such as machine learning and augmented reality, as a hobbyist.
+									Hello! I'm a full stack software developer. 
+									My passion lies in crafting efficient and effective solutions to complex problems. 
+									I also have a keen interest in machine learning and am continuously working to enhance my knowledge in this exciting field.<br>
+									So, let's <span data-section-id="5" class="m-color-atlassian nav-item" style="text-decoration: underline;">work together</span> and create something amazing!
 								</div>
 								<div class="row text-s text-center text-muted px-3 my-4">
 									<div class="m-bg-secondary w-50 m-auto d-inline-block" style="height: 2px;"></div>

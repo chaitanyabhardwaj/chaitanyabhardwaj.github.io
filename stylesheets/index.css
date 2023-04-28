@@ -4,8 +4,8 @@
 :root {
 	--primary-color : #00C7C7;
 	--primary-color-d1 : #00B3B3;
-	--primary-dark-color : #1d2127;/* #152638;*/
-	--primary-dark-color-d1 : #232934;
+	--primary-dark-color : #232c3c;/* #152638;*/
+	--primary-dark-color-d1 : #1c232e;
 	--primary-light-color : #cce0e0;
 	--primary-light-color-d1 :#acdada;
 	--accent-color : #C90000;
@@ -120,8 +120,8 @@ a { text-decoration: none !important; }
 .m-btn:hover { background-color: var(--primary-color) !important; border-color: transparent !important; }
 
 /*navbar*/
-.navbar-container { z-index: 999 !important; top: -4px; left: 0px; }
-.navbar { padding: .7rem 3.5rem .4rem 3.5rem; }
+.navbar-container { z-index: 999 !important; top: 0px; left: 0px; }
+.navbar { padding: .5rem 3.5rem .3rem 3.5rem; }
 .nav-item { cursor: pointer; transition: color 0.3s; color: var(--muted-color); }
 .nav-item:hover { color: var(--white); }
 
