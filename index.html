@@ -70,7 +70,8 @@
 		this.portfolioHover.click(function(e) {
 			const modelID = $(e.currentTarget).data('model-id');
 			if(modelID < 0) return;
-			inst.displayModel(modelID);
+			if(!inst.modelActive)
+				inst.displayModel(modelID);
 		});
 		this.modelCloseBtn.click(function() {
 			if(inst.modelActive)
@@ -655,12 +656,12 @@
 									So, let's <span data-section-id="5" class="m-color-atlassian nav-item" style="text-decoration: underline;">work together</span> and create something amazing!
 								</div>
 								<div class="row text-s text-center text-muted px-3 my-4">
-									<div class="m-bg-secondary w-50 m-auto d-inline-block" style="height: 2px;"></div>
-									<div></div>
 									<div class="col-12 mx-1 mt-3 scale">
 										<a href="https://www.hackerrank.com/chaitanyabhardw3" target="_blank" class="text-decoration-none text-s text-center text-muted">
-											<b class="font-fam-3 text-xs" style="vertical-align: middle;">HackerRank</b>
-											<img src="./resources/hackerrank_problem_solving_badge.png" alt="Gold 5 Star" style="width: 60px; height: auto;">
+											<div class="m-shadow d-inline-block py-1 px-3 rounded m-bg-primary-dark">
+												<b class="font-fam-3 text-xs" style="vertical-align: middle;">HackerRank</b>
+												<img src="./resources/hackerrank_problem_solving_badge.png" alt="Gold 5 Star" style="width: 60px; height: auto;">
+											</div>
 										</a>
 									</div>
 								</div>
@@ -794,7 +795,7 @@
 						</div>
 					</div>
 					<div class="d-flex flex-wrap flex-column flex-md-row justify-content-center text-center text-m pb-5">
-						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim" data-anim="m-anim-spin">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim scale" data-anim="m-anim-spin">
 							<div class="w-100 h-100 portfolio-bg m-anim opacity-0" data-anim="m-anim-card-text" style="border: 1px solid white">
 								<div class="w-100 h-50 py-2 text-white">
 									Dawn
@@ -804,11 +805,11 @@
 								</div>
 								<div class="w-100 h-50" style="background-image: url(./resources/dawn_cover.png); background-size: cover;"></div>
 							</div>
-							<div class="portfolio-hover d-inline-block align-middle font-fam-2 m-color-accent position-absolute w-100 cursor-pointer" data-model-id="1">
+							<div class="portfolio-hover d-inline-block align-middle font-fam-2 position-absolute w-100 cursor-pointer" data-model-id="1" style="color: rgb(225,182,102);">
 								Expand
 							</div>
 						</div>
-						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim" data-anim="m-anim-spin">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim scale" data-anim="m-anim-spin">
 							<div class="w-100 h-100 portfolio-bg m-anim opacity-0" data-anim="m-anim-card-text" style="border: 1px solid white">
 								<div class="w-100 h-50 py-2 text-white">
 									Tweet App
@@ -818,11 +819,11 @@
 								</div>
 								<div class="w-100 h-50" style="background-image: url(./resources/tweet_app_cover.png); background-size: cover;"></div>
 							</div>
-							<div class="portfolio-hover d-inline-block align-middle font-fam-2 m-color-accent position-absolute w-100 cursor-pointer" data-model-id="3">
+							<div class="portfolio-hover d-inline-block align-middle font-fam-2 position-absolute w-100 cursor-pointer" data-model-id="3" style="color: rgb(217,135,143);">
 								Expand
 							</div>
 						</div>
-						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim" data-anim="m-anim-spin">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim scale" data-anim="m-anim-spin">
 							<div class="w-100 h-100 portfolio-bg m-anim opacity-0" data-anim="m-anim-card-text" style="border: 1px solid white">
 								<div class="w-100 h-50 py-2 text-white">
 									RFQ Management
@@ -832,11 +833,11 @@
 								</div>
 								<div class="w-100 h-50" style="background-image: url(./resources/rfq_cover.png); background-size: cover;"></div>
 							</div>
-							<div class="portfolio-hover d-inline-block align-middle font-fam-2 m-color-accent position-absolute w-100 cursor-pointer" data-model-id="5">
+							<div class="portfolio-hover d-inline-block align-middle font-fam-2 position-absolute w-100 cursor-pointer" data-model-id="5" style="color: rgb(88,117,182);">
 								Expand
 							</div>
 						</div>
-						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim" data-anim="m-anim-spin">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim scale" data-anim="m-anim-spin">
 							<div class="w-100 h-100 portfolio-bg m-anim opacity-0" data-anim="m-anim-card-text" style="border: 1px solid white">
 								<div class="w-100 h-50 py-2 text-white">
 									Nlyze
@@ -846,11 +847,11 @@
 								</div>
 								<div class="w-100 h-50" style="background-image: url(./resources/nlyze_cover.png); background-size: cover;"></div>
 							</div>
-							<div class="portfolio-hover d-inline-block align-middle font-fam-2 m-color-accent position-absolute w-100 cursor-pointer" data-model-id="0">
+							<div class="portfolio-hover d-inline-block align-middle font-fam-2 position-absolute w-100 cursor-pointer" data-model-id="0" style="color: rgb(243,134,111);">
 								Expand
 							</div>
 						</div>
-						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim" data-anim="m-anim-spin">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim scale" data-anim="m-anim-spin">
 							<div class="w-100 h-100 portfolio-bg m-anim opacity-0" data-anim="m-anim-card-text" style="border: 1px solid white">
 								<div class="w-100 h-50 py-2 text-white">
 									Teleport
@@ -860,11 +861,11 @@
 								</div>
 								<div class="w-100 h-50" style="background-image: url(./resources/teleport_cover.png); background-size: cover;"></div>
 							</div>
-							<div class="portfolio-hover d-inline-block align-middle font-fam-2 m-color-accent position-absolute w-100 cursor-pointer"data-model-id="2">
+							<div class="portfolio-hover d-inline-block align-middle font-fam-2 position-absolute w-100 cursor-pointer"data-model-id="2" style="color: rgb(225,182,102);">
 								Expand
 							</div>
 						</div>
-						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim" data-anim="m-anim-spin">
+						<div class="position-relative mx-2 mx-sm-5 mx-md-3 my-3 portfolio-card m-bg-primary-dark p-3 m-anim scale" data-anim="m-anim-spin">
 							<div class="w-100 h-100 portfolio-bg m-anim opacity-0" data-anim="m-anim-card-text" style="border: 1px solid white">
 								<div class="w-100 h-50 py-2 text-white">
 									Sentiment Analyser
@@ -874,7 +875,7 @@
 								</div>
 								<div class="w-100 h-50" style="background-image: url(./resources/twitter_sentiment_cover.png); background-size: cover;"></div>
 							</div>
-							<div class="portfolio-hover d-inline-block align-middle font-fam-2 m-color-accent position-absolute w-100 cursor-pointer" data-model-id="4">
+							<div class="portfolio-hover d-inline-block align-middle font-fam-2 position-absolute w-100 cursor-pointer" data-model-id="4" style="color: rgb(147,184,185);">
 								Expand
 							</div>
 						</div>
