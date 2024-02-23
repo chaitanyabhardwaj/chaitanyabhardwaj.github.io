@@ -156,25 +156,6 @@
 			this.animationManager.triggerAnimationWayPoints(scrollBottom);
 	};
 
-	MyApp.prototype.anime = function() {
-		var pathEls = document.querySelectorAll('path');
-		for (var i = 0; i < pathEls.length; i++) {
-  		var pathEl = pathEls[i];
-  		var offset = anime.setDashoffset(pathEl);
-			pathEl.setAttribute('stroke-dashoffset', offset);
-			anime({
-			   	targets: pathEl,
-			    strokeDashoffset: [offset, 0],
-			    duration: anime.random(5000, 1000),
-			    delay: anime.random(0, 2000),
-			    loop: true,
-			    direction: 'alternate',
-			    easing: 'easeInOutSine',
-			    autoplay: true
-			  });
-		}
-	};
-
 	MyApp.prototype.toggleCertificates = function() {
 		if(this.certificatesVisible) {
 			this.certificate.removeClass(this.certificate.data('anim'));
@@ -215,7 +196,6 @@
 		sm.init();
 		const anm = new MAnim();
 		const app = new MyApp(sm, anm);
-		app.anime();
 		sm.setOnControlledScrollCallBack(app.onControlledScroll.bind(app));
 		let typeStr0 = "<div>" +
 						"Hello, I'm <span class='m-color-accent'><b>Chaitanya Bhardwaj.</b></span>" +
@@ -223,10 +203,16 @@
 					"<div>" +
 						"I'm a Software Developer." +
 					"</div>";
-		$('.typeit-1').hide();
-		app.typeIt('.typeit-0', typeStr0, 70, () => {
-			$('.typeit-1').show(500);
-			$('.typeit-1').removeClass('invisible');
+		const typeit1 = $('.typeit-1');
+		const planet1 = $('.planet1');
+		const planet2 = $('.planet2');
+		app.typeIt('.typeit-0', typeStr0, 40, () => {
+			planet1.removeClass('invisible');
+			planet1.addClass(planet1.data('anim'));
+			planet2.removeClass('invisible');
+			planet2.addClass(planet2.data('anim'));
+			typeit1.removeClass('invisible');
+			typeit1.addClass(typeit1.data('anim'));
 		});
 	});
 
@@ -542,6 +528,18 @@
 		<!-- SECTION - 1 -->
 		<div class="section-container m-bg-primary-dark h-100">
 			<section id="section-1" class="m-color-secondary text-l section position-relative h-100">
+				<div class="position-absolute circle invisible planet planet1" style="top: 35%; left: 43%; z-index: 999; width: 200px; height: 200px;" data-anim="m-anim-revolve-l">
+					<div class="position-absolute circle" style="top: 10%; left: 10%; z-index: 999; width: 15px; height: 15px; background-color: rgb(219, 219, 77);"></div>
+				</div>
+				<div class="position-absolute circle invisible planet planet2" style="top: 25%; left: 37%; z-index: 999; width: 350px; height: 350px;" data-anim="m-anim-revolve-r">
+					<div class="position-absolute circle planet planet1" style="top: 5%; left: 5%; z-index: 999; width: 60px; height: 60px;">
+						<div class="position-absolute circle m-bg-secondary" style="top: 5%; left: 5%; z-index: 999; width: 10px; height: 10px;"></div>
+						<div class="position-absolute circle m-bg-primary" style="top: 25%; left: 25%; z-index: 999; width: 30px; height: 30px;"></div>
+					</div>
+					<div class="position-absolute circle planet planet2" style="top: 5%; left: 5%; z-index: 999; width: 60px; height: 60px;">
+						<div class="position-absolute circle m-bg-secondary" style="bottom: -15%; right: -15%; z-index: 999; width: 5px; height: 5px;"></div>
+					</div>
+				</div>
 				<div class="position-absolute w-100 d-block text-center font-weight-bold" style="top: 30%; z-index: 999;">
 					<div class="typeit-0">
 						<!--
@@ -553,7 +551,7 @@
 						</div>
 						-->
 					</div>
-					<div class="m-3 typeit-1 invisible">
+					<div class="m-3 typeit-1 invisible" data-anim="m-anim-fade-in">
 						<button type="button" class="m-btn m-btn-white m-bg-primary-dark m-color-secondary font-weight-bold text-m px-4 py-2" id="view-work">
 							View my work <i class="fa fa-long-arrow-right" id="rotating-arrow"></i>
 						</button>

@@ -21,8 +21,8 @@
 }
 
 /*fade*/
-.m-anim-fade-in { animation: fade_in 1s; }
-.m-anim-fade-out { animation: fade_out 1s; }
+.m-anim-fade-in { animation: fade_in 1.5s; }
+.m-anim-fade-out { animation: fade_out 1.5s; }
 @keyframes fade_in {
 	0% { opacity: 0; }
 	100% { opacity: 1; }
@@ -63,4 +63,24 @@
 	25% { opacity: 0; }
 	75% { opacity: 1; }
 	100% { opacity: 1; }
+}
+
+.m-anim-revolve-l { animation: revolve-l 3s linear infinite; }
+@keyframes revolve-l {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	} 
+}
+
+.m-anim-revolve-r { animation: revolve-r 9s linear infinite; }
+@keyframes revolve-r {
+	from {
+		transform: rotate(360deg);
+	}
+	to {
+		transform: rotate(0deg);
+	} 
 }

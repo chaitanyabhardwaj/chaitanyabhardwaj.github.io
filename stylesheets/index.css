@@ -5,6 +5,7 @@
 	--primary-color : #00C7C7;
 	--primary-color-d1 : #00B3B3;
 	--primary-dark-color : #252934;/* #152638;*/
+	--primary-dark-color-d2: #576079;
 	--primary-dark-color-d1 : #1b242f;
 	--primary-light-color : #cce0e0;
 	--primary-light-color-d1 :#acdada;
@@ -172,6 +173,8 @@ a { text-decoration: none !important; }
 .padding-100 { padding: 100px !important; }
 .padding-100-x { padding-left: 100px !important; padding-right: 100px !important; }
 .dialog-box { top: 0; left: 0; }
+.circle { border-radius: 100% !important;}
+.planet { border: 1.2px solid var(--primary-dark-color-d2);}
 #double-up { width: 40px; height: 40px; top: -20px; left: 48%; }
 #double-up:hover { transform: scale(1.1,1.1) !important; }
 
