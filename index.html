@@ -36,6 +36,8 @@
 		this.sectionManager = sectionManager;
 		this.animationManager = animationManager;
 		//dom shortcuts
+		this.section1Container = $('#section-1-container');
+
 		this.contactDiscord = $('.contact-discord');
 		this.viewWorkBtn = $('#view-work');
 		this.wrapper = $('.outer-wrapper');
@@ -53,22 +55,23 @@
 
 		this.animationManager = animationManager;
 
-		this.planet1 = $('.planet1');
-		this.planet2 = $('.planet2');
-		this.planet1.addClass(this.planet1.data('anim'));
-		this.planet2.addClass(this.planet2.data('anim'));
+		this.orbit1 = $('.orbit1');
+		this.orbit2 = $('.orbit2');
+		this.planet = $('.planet');
+		this.orbit1.addClass(this.orbit1.data('anim'));
+		this.orbit2.addClass(this.orbit2.data('anim'));
 
 		//event listeners
 		this.viewWorkBtn.click(() => {
 			sectionManager.goToSection(1);
 		});
 		this.viewWorkBtn.mouseover(() => {
-			inst.planet1.removeClass('invisible');
-			inst.planet2.removeClass('invisible');
+			inst.planet.removeClass('opacity-0');
+			inst.section1Container.addClass('m-bg-black');
 		});
 		this.viewWorkBtn.mouseout(() => {
-			inst.planet1.addClass('invisible');
-			inst.planet2.addClass('invisible');
+			inst.planet.addClass('opacity-0');
+			inst.section1Container.removeClass('m-bg-black');
 		});
 		this.contactDiscord.click(function(e) {
 			//copy discord text to system clipboard on click
@@ -533,9 +536,9 @@
 	</div>
 	<div class="outer-container">
 		<!-- SECTION - 1 -->
-		<div class="section-container m-bg-primary-dark h-100">
+		<div class="section-container m-bg-primary-dark h-100" id ="section-1-container">
 			<section id="section-1" class="m-color-secondary text-l section position-relative h-100">
-				<div class="position-absolute w-100 d-block text-center font-weight-bold" style="top: 30%; z-index: 999;">
+				<div class="position-absolute w-100 d-block text-center font-weight-bold" style="top: 20%; z-index: 999;">
 					<div class="typeit-0">
 						<!--
 						<div>
@@ -546,20 +549,21 @@
 						</div>
 						-->
 					</div>
-					<div class="m-3 typeit-1 invisible position-relative" data-anim="m-anim-fade-in">
+					<div style="height: 100px;"></div>
+					<div class="typeit-1 invisible position-relative" data-anim="m-anim-fade-in">
 						<button type="button" class="m-btn m-btn-white m-bg-primary-dark m-color-secondary font-weight-bold text-m px-4 py-2" id="view-work">
 							View my work <i class="fa fa-long-arrow-right" id="rotating-arrow"></i>
 						</button>
-						<div class="position-absolute circle invisible planet planet1" style="top: -47%; left: 45%; width: 120px; height: 120px;" data-anim="m-anim-revolve-l">
-							<div class="position-absolute circle m-bg-secondary" style="top: 10%; left: 10%; width: 15px; height: 15px;"></div>
+						<div class="position-absolute circle orbit orbit1" style="top: -47%; left: 45%; width: 120px; height: 120px;" data-anim="m-anim-revolve-l">
+							<div class="position-absolute circle planet opacity-0 m-bg-secondary" style="top: 10%; left: 10%; width: 12px; height: 12px;"></div>
 						</div>
-						<div class="position-absolute circle invisible planet planet2" style="top: -145%; left: 41%; width: 220px; height: 220px;" data-anim="m-anim-revolve-r">
-							<div class="position-absolute circle planet planet1" style="top: 2%; left: 2%; width: 60px; height: 60px;">
-								<div class="position-absolute circle m-bg-secondary" style="top: 5%; left: 5%; width: 10px; height: 10px;"></div>
-								<div class="position-absolute circle m-bg-primary-d1" style="top: 25%; left: 25%; width: 30px; height: 30px;"></div>
+						<div class="position-absolute circle orbit orbit2" style="top: -115%; left: 42%; width: 200px; height: 200px;" data-anim="m-anim-revolve-r">
+							<div class="position-absolute circle orbit orbit1" style="top: 1%; left: 1%; width: 50px; height: 50px;">
+								<div class="position-absolute circle planet opacity-0 m-bg-secondary" style="top: 5%; left: 5%; width: 8px; height: 8px;"></div>
+								<div class="position-absolute circle planet opacity-0 m-bg-primary-d1" style="top: 25%; left: 25%; width: 20px; height: 20px;"></div>
 							</div>
-							<div class="position-absolute circle planet planet2" style="top: 2%; left: 2%; width: 60px; height: 60px;">
-								<div class="position-absolute circle m-bg-accent" style="bottom: -12%; right: -12%; width: 5px; height: 5px;"></div>
+							<div class="position-absolute circle orbit orbit2" style="top: 1%; left: 1%; width: 50px; height: 50px;">
+								<div class="position-absolute circle planet opacity-0 m-bg-accent" style="bottom: -12%; right: -12%; width: 5px; height: 5px;"></div>
 							</div>
 						</div>
 					</div>
