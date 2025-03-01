@@ -52,6 +52,9 @@ a { text-decoration: none !important; }
 .text-l { font-size: 35px !important; }
 .text-xl { font-size: 45px !important; }
 
+/*text-align*/
+.vertical-align-middle { vertical-align: -webkit-middle !important; vertical-align: middle !important; }
+
 /*colors*/
 .m-color-primary { color: var(--primary-color) !important; }
 .m-color-primary-d1 { color: var(--primary-color-d1) !important; }
